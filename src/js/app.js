@@ -1,0 +1,86 @@
+angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', 'firebase', 'checklist-model'])
+//set constant variable for firebase url
+.constant('FBURL', 'https://roup.firebaseio.com')
+
+.run(['loginService', '$rootScope', 'FBURL', function(loginService, $rootScope, FBURL){
+  // establish authentication variable
+  $rootScope.auth = loginService.init('/');
+  $rootScope.FBURL = FBURL;
+}])
+
+.config(function($stateProvider, $urlRouterProvider){
+  $stateProvider
+
+  /* Login and Signup */
+  .state('connect',{
+    url: '/',
+    controller: 'ConnectCtrl',
+    templateUrl: 'templates/connect.html'
+  })
+  .state('welcome', {
+    url: '/welcome/:firstName',
+    controller: 'WelcomeCtrl',
+    templateUrl: 'templates/welcome.html'
+  })
+
+  // /* Message Creation */
+  // .state('publish', {
+  //   url: '/publish',
+  //   controller: 'PublishCtrl',
+  //   templateUrl: 'templates/publish.html',
+  // })
+  // .state('newSent', {
+  //   url: '/new',
+  //   controller: 'newSentMsgCtrl',
+  //   templateUrl: 'templates/outbox.new.html',
+  // })
+
+  // /* Received Messages */
+  // .state('inbox', {
+  //   url: '/inbox',
+  //   controller: 'InboxCtrl',
+  //   templateUrl: 'templates/inbox.html'
+  // })
+  // .state('receivedMessage', {
+  //   url: '/inbox/:messageId',
+  //   controller: 'ReceivedMsgCtrl',
+  //   templateUrl: 'templates/inbox.message.html'
+  // })
+
+  //  Sent Messages 
+  // .state('outbox', {
+  //   url: '/outbox',
+  //   controller: 'OutboxCtrl',
+  //   templateUrl: 'templates/outbox.html'
+  // })
+  // .state('sentMessage', {
+  //   url: '/:messageId',
+  //   controller: 'SentMsgCtrl',
+  //   templateUrl: 'templates/outbox.message.html'
+  // })
+
+  // /* Bookmarked Messages */
+  // .state('bookmarks', {
+  //   url: '/bookmarks',
+  //   controller: 'BookmarksCtrl',
+  //   templateUrl: 'templates/bookmarks.html'
+  // })
+  // .state('bookmarkedMessage', {
+  //   url: '/bookmarks/:messageId',
+  //   controller: 'BookmarkedMsgCtrl',
+  //   templateUrl: 'templates/bookmarks.message.html'
+  // })
+
+  /* Account & Feedback */
+  .state('account', {
+    url: '/account',
+    controller: 'AccountCtrl',
+    templateUrl: 'templates/account.html'
+  })
+  .state('feedback', {
+    url: '/feedback',
+    templateUrl: 'templates/feedback.html'
+  })
+
+  $urlRouterProvider.otherwise("/");
+});
