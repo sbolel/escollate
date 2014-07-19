@@ -1,0 +1,11 @@
+.DS_Store
+node_modules
+development/
+release/
+.lib/
+.template/
+.idea/
+.idea
+local_config.json
+forge-error.log
+src/identity.json

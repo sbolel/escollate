@@ -1,0 +1,9 @@
+{
+  "name": "Roup",
+  "version": "0.0.1",
+  "dependencies": {
+    "ionic-bower": "*",
+    "angularfire": "*"
+  },
+  "private": true
+}
