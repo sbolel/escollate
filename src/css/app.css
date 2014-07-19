@@ -1,0 +1,62 @@
+body {
+  color: #000000;
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+h1, h2 {
+  font-weight: 100;
+}
+h1 {
+  font-size: 4.5em;
+}
+h2 {
+  font-size: 2.5em;
+}
+.center-text { text-align: center !important; }
+.no-background { background: none !important; }
+
+.ion-view { background-color: #ffffff; }
+
+.fill-half { height: 50%; padding: 0; }
+.fill-quad { height: 100%; padding: 0; }
+
+.vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.parent {
+    position: relative;
+    height: 100%;
+}
+.bottom-container {
+    position: absolute;
+    bottom: 0;
+    left:0;
+    right:0;
+}
+.avatar-frame{border: 2px solid #c7b89e;}
+.avatar-frame,.avatar-frame img{
+  width: 72px;
+  height: 72px;
+  -webkit-border-radius: 36px; /* Saf3+, Chrome */
+  border-radius: 36px; /* Opera 10.5, IE 9 */
+  /*-moz-border-radius: 36px;  Disabled for FF1+ */
+  }
+
+#homeView {
+  height: 100%;
+  width: auto;
+}
+#homeLogoContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -72px;
+  width: auto;
+  height: 144px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

@@ -1,0 +1,27 @@
+/*
+9CC5C9 - light blue
+D5544F - red
+CDB599 - dust
+A08689 - brown
+*/
+
+
+.fill-blue { background-color: #9CC5C9; }
+.fill-red { background-color: #D5544F; }
+.fill-dust { background-color: #CDB599; }
+.fill-brown { background-color: #A08689; }
+
+.color-blue { color: #9CC5C9; }
+.color-red { color: #D5544F; }
+.color-dust { color: #CDB599; }
+.color-brown { color: #A08689; }
+
+.button-facebook {
+  color: #3b5998;
+}
+.button-google {
+  color: #d34836;
+}
+.button-start{
+
+}
