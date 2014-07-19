@@ -1,0 +1,14 @@
+<ion-view name="Profile" hide-back-button="false" hide-nav-bar="false">
+    <div class="list has-nav-header">
+      <label class="item card item-input item-stacked-label">
+        <span class="input-label">Account Provider</span>
+        <input type="text" ng-model="user.provider">
+      </label>
+      <label class="item card item-input item-stacked-label">
+        <span class="input-label">Display Name</span>
+        <input type="text" ng-model="user.displayName">
+      </label>
+    <button class="button button-full button-positive" ng-click="updateProfile()">Save</button>
+    <button class="button button-full button-positive" ng-click="logout()">Sign Out</button>
+    </div>
+</ion-view>

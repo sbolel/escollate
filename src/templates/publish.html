@@ -1,0 +1,31 @@
+<ion-view hide-nav-bar="true">
+  <!--Top content -->
+  <ion-pane style="height:50%">
+      <img ng-src="{{ selectedPicture && selectedPicture.uri || 'Click to take a picture' }}" style="width:auto;height:100%">
+  </ion-pane>
+  <!-- Bottom Content -->
+  <ion-content style="margin-top:50%">
+    <div class="list" style="margin-top:50%">
+
+      <div class="item item-divider">Users</div>
+      <div class="item item-checkbox" ng-repeat="user in recipients.users" >
+        <label class="checkbox">
+          <input type="checkbox" checklist-model="selectedRecipients" checklist-value="user.uid">
+        </label>
+        {{user.displayName}}
+      </div>
+      <!-- <div class="item item-divider">Invitees</div>
+      <div class="item" ng-repeat="recipient in recipients.invitees" >{{recipient.displayName}}</div> -->
+    </div>
+  </ion-content>
+  <div class="bar bar-footer">
+    <div class="item item-input-inset item-input-caption">
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="Caption" ng-model="messageTitle">
+      </label>
+      <button class="button button-small button-positive" ng-click="sendToRecipients()">
+        <i class="icon ion-paper-airplane"></i>
+      </button>
+    </div>
+  </div>
+</ion-view>

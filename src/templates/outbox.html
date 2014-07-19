@@ -1,0 +1,11 @@
+<ion-view title="Sent" hide-nav-bar="false" hide-back-button="false">
+  <ion-content class="has-nav-header">
+  <ion-list >
+  <div class="item item-divider">Sent</div>
+    <ion-item ng-show="nullCheck" ng-hide="!nullCheck">No sent messages</ion-item>
+    <ion-item ng-repeat="(key, message) in outbox" ng-click="openOutboxMessage(key)">
+      {{message.title || 'no title provided'}}
+    </ion-item>
+  </ion-list>
+  </ion-content>
+</ion-view>
