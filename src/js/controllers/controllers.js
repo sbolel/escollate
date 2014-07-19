@@ -1,17 +1,13 @@
 angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
 
 .controller('ConnectCtrl', function(firebaseRef, loginService, forgeService, syncData, $rootScope, $scope, $state, $firebase, $location, $timeout, storageService) {
-
   console.log('CONTROLLER = ConnectCtrl');
-
   $scope.connectWithProvider = function(provider){
     //switch to check against a list of valid providers
     if(provider == 'google' || provider == 'facebook'){
       loginService.providerLogin(provider, function(err, user){
         if(!err){
           console.log(provider + ' login successful for '+user.uid+'. User object:');
-          console.log(user);
-
           firebaseRef(['accounts', user.uid]).once('value', function(userSnap){
             if(userSnap.val() == null){
               // user does not exist
@@ -19,7 +15,7 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
               // getUserFirstName()
               var firstName = 'undefined';
               if ($rootScope.auth.user) {
-                if ($rootScope.auth.user.provider == 'google') { 
+                if ($rootScope.auth.user.provider == 'google') {
                   console.log('google');
                   firstName = $rootScope.auth.user.thirdPartyUserData.given_name;
                 } else if ($rootScope.auth.user.provider == 'facebook') {
@@ -61,6 +57,9 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
   $scope.createNewUser = function(userType) {
   /* Args: userType - ['consumer','business'] */
     console.log('First login of this user; Adding '+$rootScope.auth.user.uid+' to Firebase and registering Parse Push.');
+    if(userType == 'consumer'){
+        $state.go('consumer');
+    }
     loginService.createProviderProfile($rootScope.auth.user, userType, function(err){
       if(!err){
         console.log("created new profile");
@@ -238,4 +237,52 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
     $scope.err = null;
     $scope.msg = null;
   }
-}]);
+  }])
+
+ .controller('CardsCtrl', function($scope, $ionicSwipeCardDelegate, $rootScope) {
+  $rootScope.accepted = 0;
+  $rootScope.rejected = 0;
+  var cardCount = 0;
+  var cardTypes = [
+    { title: 'Mid-Century Puzzle Solver', image: 'https://dl.dropboxusercontent.com/s/44pkexr08hp14lg/chair1.jpg' },
+    { title: 'Clean, Classic Eames Chair', image: 'https://dl.dropboxusercontent.com/s/mzzadz5zz4e8or8/chair2.jpg' },
+    { title: 'Serious Arm Chair. No Kidding.', image: 'https://dl.dropboxusercontent.com/s/sukm6n2cimigm1g/chair3.jpg' },
+    { title: 'Cheerful Chair', image: 'https://dl.dropboxusercontent.com/s/x4duj48krtsjtb1/chair4.jpg' },
+    { title: '3 Ottomans. 30 bucks', image: 'https://dl.dropboxusercontent.com/s/k3bj926xf55fb0r/ottomans.jpg' }
+  ];
+
+  $scope.cards = Array.prototype.slice.call(cardTypes, 0, 0);
+
+  $scope.cardSwiped = function(index) {
+    $scope.addCard();
+  };
+
+  $scope.cardDestroyed = function(index) {
+    if (this.swipeCard.positive === true) {
+      $scope.$root.accepted++;
+    } else {
+      $scope.$root.rejected++;
+    }
+    $scope.cards.splice(index, 1);
+  };
+
+  $scope.addCard = function() {
+    var newCard = cardTypes[cardCount];
+    cardCount++;
+    newCard.id = Math.random();
+    $scope.cards.push(angular.extend({}, newCard));
+  }
+})
+
+.controller('CardCtrl', function($scope, $ionicSwipeCardDelegate, $rootScope) {
+  $scope.accept = function () {
+    var card = $ionicSwipeCardDelegate.getSwipebleCard($scope);
+    $rootScope.accepted++;
+    card.swipe(true);
+  }
+  $scope.reject = function() {
+    var card = $ionicSwipeCardDelegate.getSwipebleCard($scope);
+    $rootScope.rejected++;
+    card.swipe();
+  };
+});

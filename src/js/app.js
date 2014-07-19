@@ -27,19 +27,14 @@ angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', '
       controller: 'CardsCtrl',
       templateUrl: 'templates/browse.html'
   })
-
-
-
   .state('business', {
     url: '/business',
     controller: 'BusinessCtrl',
     templateUrl: 'templates/app.business.html',
   })
-
-
   .state('consumer', {
     url: '/consumer',
-    controller: 'ConsumerCtrl',
+    controller: 'CardsCtrl',
     templateUrl: 'templates/app.consumer.html',
   })
 
