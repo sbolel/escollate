@@ -1,4 +1,4 @@
-angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', 'firebase', 'checklist-model'])
+angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', 'firebase', 'checklist-model', 'ionic.contrib.ui.cards'])
 //set constant variable for firebase url
 .constant('FBURL', 'https://roup.firebaseio.com')
 
@@ -21,6 +21,11 @@ angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', '
     url: '/welcome/:firstName',
     controller: 'WelcomeCtrl',
     templateUrl: 'templates/welcome.html'
+  })
+  .state('cards', {
+      url: '/browse',
+      controller: 'CardsCtrl',
+      templateUrl: 'templates/browse.html'
   })
 
 
@@ -64,7 +69,7 @@ angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', '
   //   templateUrl: 'templates/inbox.message.html'
   // })
 
-  //  Sent Messages 
+  //  Sent Messages
   // .state('outbox', {
   //   url: '/outbox',
   //   controller: 'OutboxCtrl',
