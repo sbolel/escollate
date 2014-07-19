@@ -9,3 +9,4 @@ release/
 local_config.json
 forge-error.log
 src/identity.json
+bower_components
