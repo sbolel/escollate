@@ -86,30 +86,39 @@ angular.module('roupApp.service.login', ['firebase', 'roupApp.service.firebase',
     }])
 
   .factory('providerProfileCreator', ['firebaseRef', '$timeout', function(firebaseRef, $timeout, $scope) {
-    return function(userObj, callback) {
+    return function(userObj, userType, callback) {
       console.warn(userObj);
 
-      //check for profile picture
+      // set firebaseRef for userType
+      if(userType == 'consumer'){
+        var userTypeRef = 'consumers';
+      } else if (userType == 'business'){
+        var userTypeRef = 'businesses';
+      } else {
+        console.error('profileCreator: invalid userType: '+userType);
+      }
+
+      // check for profile picture
       if(userObj.thirdPartyUserData.hasOwnProperty('picture')){
         var userPic = userObj.thirdPartyUserData.picture;
-      }
-      else{
+      } else{
         var userPic = 'undefined';
       }
 
-      firebaseRef(['users', userObj.uid]).set({
+      firebaseRef(['users', userTypeRef, userObj.uid]).set({
         displayName: userObj.displayName,
         email: userObj.thirdPartyUserData.email,
         picture: userPic,
         provider: userObj.provider}, function(err) {
 
         if(!err){
-          console.log('LOGIN_SERVICE: newUser in Firebase: ' + userObj.uid);
+          console.log('LOGIN_SERVICE: newUser ('+userTypeRef+') in Firebase: ' + userObj.uid);
           firebaseRef('names/' + userObj.displayName).set({
             uid:userObj.uid, 
             email: userObj.thirdPartyUserData.email,
             picture: userPic,
-            provider: userObj.provider}, function(err){
+            provider: userObj.provider,
+            role: userTypeRef}, function(err){
             if(err){
               console.error('error in push to names: ' + err);
             }

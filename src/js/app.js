@@ -23,6 +23,23 @@ angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', '
     templateUrl: 'templates/welcome.html'
   })
 
+
+
+  .state('business', {
+    url: '/business',
+    controller: 'BusinessCtrl',
+    templateUrl: 'templates/app.business.html',
+  })
+
+
+  .state('consumer', {
+    url: '/consumer',
+    controller: 'ConsumerCtrl',
+    templateUrl: 'templates/app.consumer.html',
+  })
+
+
+
   // /* Message Creation */
   // .state('publish', {
   //   url: '/publish',

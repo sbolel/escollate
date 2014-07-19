@@ -58,9 +58,10 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
   console.log('CONTROLLER = WelcomeCtrl');
   $scope.firstName = $stateParams.firstName;
 
-  $scope.createNewUser = function() {
+  $scope.createNewUser = function(userType) {
+  /* Args: userType - ['consumer','business'] */
     console.log('First login of this user; Adding '+$rootScope.auth.user.uid+' to Firebase and registering Parse Push.');
-    loginService.createProviderProfile($rootScope.auth.user, function(err){
+    loginService.createProviderProfile($rootScope.auth.user, userType, function(err){
       if(!err){
         console.log("created new profile");
         forgeService.savePushId();
@@ -72,6 +73,20 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
     })
   }
 })
+
+
+
+
+.controller('BusinessCtrl', function(firebaseRef, forgeService, messagesService, syncData, loadRecipients, loadPic, $rootScope, $scope, $state, $firebase, $location, $timeout, $ionicLoading) {
+  console.log('CONTROLLER = PublishCtrl');
+})
+
+
+
+.controller('ConsumerCtrl', function(firebaseRef, forgeService, messagesService, syncData, loadRecipients, loadPic, $rootScope, $scope, $state, $firebase, $location, $timeout, $ionicLoading) {
+  console.log('CONTROLLER = PublishCtrl');
+})
+
 
 // .controller('PublishCtrl', function(firebaseRef, forgeService, messagesService, syncData, $rootScope, $scope, $state, $firebase, $location, $timeout, loadRecipients, loadPic, $ionicLoading) {
 //   console.log('CONTROLLER = PublishCtrl');
