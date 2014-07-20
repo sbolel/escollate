@@ -86,7 +86,7 @@ angular.module('roupApp.service.login', ['firebase', 'roupApp.service.firebase',
     }])
 
   .factory('providerProfileCreator', ['firebaseRef', '$timeout', function(firebaseRef, $timeout, $scope) {
-    return function(userObj, callback) {
+    return function(userObj, username, callback) {
       console.warn(userObj);
 
       // check for profile picture
@@ -100,7 +100,8 @@ angular.module('roupApp.service.login', ['firebase', 'roupApp.service.firebase',
         displayName: userObj.displayName,
         email: userObj.thirdPartyUserData.email,
         picture: userPic,
-        provider: userObj.provider}, function(err) {
+        provider: userObj.provider,
+        username: username}, function(err) {
 
         if(!err){
           console.log('LOGIN_SERVICE: newUser in Firebase: ' + userObj.uid);

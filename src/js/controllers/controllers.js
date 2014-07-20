@@ -47,7 +47,7 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
   $scope.firstName = $stateParams.firstName;
   $scope.createNewUser = function() {
     console.log('First login of this user; Adding '+$rootScope.auth.user.uid+' to Firebase and registering Parse Push.');
-    loginService.createProviderProfile($rootScope.auth.user, function(err){
+    loginService.createProviderProfile($rootScope.auth.user, $scope.username, function(err){
       if(!err){
         console.log("created new profile");
         forgeService.savePushId();

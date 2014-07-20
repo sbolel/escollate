@@ -1,6 +1,7 @@
 body {
   color: #000000;
   cursor: url('http://ionicframework.com/img/finger.png'), auto;
+  font-family: "Lato", sans-serif !important;
 }
 h1, h2 {
   font-weight: 200;
@@ -10,6 +11,9 @@ h1 {
 }
 h2 {
   font-size: 2.5em;
+}
+.title-light{
+  font-weight: 100;
 }
 
 i.nav-icon {
@@ -158,3 +162,8 @@ i.nav-icon {
   animation: fadeOut 0.3s;
   position: absolute; }
 
+
+::-webkit-input-placeholder { font-style: italic; }
+::-moz-placeholder { font-style: italic; } /* firefox 19+ */
+:-ms-input-placeholder { font-style: italic; } /* ie */
+input:-moz-placeholder { font-style: italic; }

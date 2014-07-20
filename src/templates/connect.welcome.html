@@ -1,13 +1,12 @@
 <ion-view title="Welcome" class="center-text" hide-nav-bar="true">
 
-  <div id="welcome-view" class="vertical-align">
-    <h1>Hi {{firstName}}!</h1>
-    <h2>Welcome to Escollate</h2>
-    <h4>Escalate your business</h4>
-  </div>
-
-  <div class="bottom-container center-text">
-    <button class="button button-block button-connect fill-purple white" ng-click="createNewUser()">Start experience</button>
+  <div id="welcome-view" style="margin-top:15%;">
+    <h1 style="margin-bottom:5%;">Hi {{firstName}}!</h1>
+    <h2 style="margin-bottom:7%;">Welcome to Escollate.</h2>
+    <label class="item item-input" style="margin-bottom:7%;">
+      <input class="center-text" ng-model="username" type="text" placeholder="Enter a username...">
+    </label>
+    <button class="button button-outline button-block button-small button-calm" style="margin-left:20%;width:60%;" ng-click="createNewUser()">Continue</button>
   </div>
 
 </ion-view>
