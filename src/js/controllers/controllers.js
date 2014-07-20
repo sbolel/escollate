@@ -27,46 +27,36 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
               } else {
                 console.error('Auth object not defined in rootScope.');
               }
-              // !-- getUserFirstName()
 
               console.log('Provider account not associated with a user, redirecting to welcome.');
               $state.go('welcome',{firstName: firstName});
-            }
-            else {
+            } else {
               console.log('user account found for ' + user.displayName)
-              // TODO: $state.go('main');
+              $state.go('home');
             }
           })
-        }
-        else{
+        } else{
           console.error('HOMECTLR: Unsuccessful login with ' + provider + '. Error: ' + err);
         }
       })
-    }
-    else{
+    } else{
       console.error('HOMECTLR: A valid provider must be selected')
     }
   }
 })
 
 .controller('WelcomeCtrl', function($scope, $rootScope, $state, $stateParams, loginService, forgeService) {
-
   console.log('CONTROLLER = WelcomeCtrl');
   $scope.firstName = $stateParams.firstName;
-
-  $scope.createNewUser = function(userType) {
+  $scope.createNewUser = function() {
   /* Args: userType - ['consumer','business'] */
     console.log('First login of this user; Adding '+$rootScope.auth.user.uid+' to Firebase and registering Parse Push.');
-    if(userType == 'consumer'){
-        $state.go('consumer');
-    }
-    loginService.createProviderProfile($rootScope.auth.user, userType, function(err){
+    loginService.createProviderProfile($rootScope.auth.user, function(err){
       if(!err){
         console.log("created new profile");
         forgeService.savePushId();
-        $state.go('publish');
-      }
-      else{
+        $state.go('home');
+      } else{
         console.error('error in creating profile: ' + err);
       }
     })
@@ -74,16 +64,9 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
 })
 
 
+.controller('HomeCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $firebase, $location, $timeout, $ionicLoading) {
+  console.log('CONTROLLER = HomeCtrl');
 
-
-.controller('BusinessCtrl', function(firebaseRef, forgeService, messagesService, syncData, loadRecipients, loadPic, $rootScope, $scope, $state, $firebase, $location, $timeout, $ionicLoading) {
-  console.log('CONTROLLER = PublishCtrl');
-})
-
-
-
-.controller('ConsumerCtrl', function(firebaseRef, forgeService, messagesService, syncData, loadRecipients, loadPic, $rootScope, $scope, $state, $firebase, $location, $timeout, $ionicLoading) {
-  console.log('CONTROLLER = PublishCtrl');
 })
 
 
@@ -230,6 +213,18 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
       }
     });
   }
+  $scope.sendFeedback = function(){
+    console.log('sendFeedback called');
+    var time = Date.now();
+    firebaseRef(['feedback']).push({user:{uid:$rootScope.auth.user.uid, email: $rootScope.auth.user.email, name: $rootScope.auth.user.displayName}, content:$scope.feedbackContent, createdAt: time}, function(err){
+      if (err){
+        console.log('data not saved');
+      }
+      else {
+        console.log('updated ' + $rootScope.auth.user.displayName)
+      }
+    });
+  }
   $scope.logout = function() {
     loginService.logout();
   }
@@ -237,7 +232,7 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
     $scope.err = null;
     $scope.msg = null;
   }
-  }])
+}])
 
  .controller('CardsCtrl', function($scope, $ionicSwipeCardDelegate, $rootScope) {
   $rootScope.accepted = 0;

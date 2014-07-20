@@ -20,24 +20,36 @@ angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', '
   .state('welcome', {
     url: '/welcome/:firstName',
     controller: 'WelcomeCtrl',
-    templateUrl: 'templates/welcome.html'
+    templateUrl: 'templates/connect.welcome.html'
   })
+
+  /* Main App */
+  .state('home', {
+    url: '/home',
+    controller: 'HomeCtrl',
+    templateUrl: 'templates/home.html',
+  })
+
+
   .state('cards', {
       url: '/browse',
       controller: 'CardsCtrl',
       templateUrl: 'templates/browse.html'
   })
-  .state('business', {
-    url: '/business',
-    controller: 'BusinessCtrl',
-    templateUrl: 'templates/app.business.html',
-  })
-  .state('consumer', {
-    url: '/consumer',
-    controller: 'CardsCtrl',
-    templateUrl: 'templates/app.consumer.html',
-  })
+  
 
+
+  /* Account */
+  .state('account', {
+    url: '/account',
+    controller: 'AccountCtrl',
+    templateUrl: 'templates/account.html'
+  })
+  .state('feedback', {
+    url: '/feedback',
+    controller: 'AccountCtrl',
+    templateUrl: 'templates/feedback.html'
+  })
 
 
   // /* Message Creation */
@@ -88,16 +100,6 @@ angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', '
   //   templateUrl: 'templates/bookmarks.message.html'
   // })
 
-  /* Account & Feedback */
-  .state('account', {
-    url: '/account',
-    controller: 'AccountCtrl',
-    templateUrl: 'templates/account.html'
-  })
-  .state('feedback', {
-    url: '/feedback',
-    templateUrl: 'templates/feedback.html'
-  })
 
   $urlRouterProvider.otherwise("/");
 });
