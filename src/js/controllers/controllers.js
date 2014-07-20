@@ -63,15 +63,6 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
 .controller('HomeCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $ionicTabsDelegate, $timeout) {
   console.log('CONTROLLER[HomeCtrl]');
   var tabDelegate = $ionicTabsDelegate.$getByHandle('Main');
-  $scope.tabAni = function(){
-    if(tabDelegate.selectedIndex() == 0 ){
-      return 'tabs-positive tabs-icon-top slide-in-left'
-    }
-    else{
-      return 'tabs-positive tabs-icon-top slide-in-right'
-    }
-
-  }
   $scope.pageTitle = function(){
       if(tabDelegate.selectedIndex() == 0 ){
         return 'Ask'
