@@ -60,7 +60,19 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
   }
 })
 
+.controller('QuestionCtrl', function($scope, $rootScope, forgeService, firebaseRef){
+  console.log('CONTROLLER[QuestionCtrl]');
+  $scope.submitQuestion = function(){
+    console.log('submitQuestion run with ' + JSON.stringify({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}))
+    firebaseRef(['questions']).push({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}, function(err){
+      if(!err){
+        console.log('push successful');
+        $scope.model.hide();
+      }
+    })
+  }
 
+})
 .controller('HomeCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $ionicTabsDelegate, $ionicModal, $timeout, $http) {
   console.log('CONTROLLER[HomeCtrl]');
   var tabDelegate = $ionicTabsDelegate.$getByHandle('Main');
@@ -128,7 +140,15 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
         console.log(data);
         $scope.data = data;
     });
-
+    $scope.submitQuestion = function(){
+      console.log('submitQuestion run with ' + JSON.stringify({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}))
+      firebaseRef(['questions']).push({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}, function(err){
+        if(!err){
+          console.log('push successful');
+          $scope.closeModal();
+        }
+      })
+    }
   // $timeout(function(){
   //   console.log('Tabs index: ' + tabDelegate.selectedIndex());
   // }, 2000)
