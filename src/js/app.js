@@ -24,7 +24,6 @@ angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', '
   })
   .state('home', {
     url:'/home',
-    controller: 'HomeCtrl',
     templateUrl: 'templates/home.html'
   })
 

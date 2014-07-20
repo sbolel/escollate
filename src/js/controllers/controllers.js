@@ -60,9 +60,22 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
 })
 
 
-.controller('HomeCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $ionicTabsDelegate) {
+.controller('HomeCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $ionicTabsDelegate, $timeout) {
   console.log('CONTROLLER[HomeCtrl]');
-  console.log('Tabs index: ' + $ionicTabsDelegate.selectedIndex());
+  var tabDelegate = $ionicTabsDelegate.$getByHandle('Main');
+  $scope.pageTitle = function(){
+      if(tabDelegate.selectedIndex() == 0 ){
+        return 'Ask'
+      }
+    else{
+      return 'Dash'
+    }
+
+  }
+  $timeout(function(){
+    console.log('Tabs index: ' + tabDelegate.selectedIndex());
+
+}, 2000)
 
 })
 
