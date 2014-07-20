@@ -4,13 +4,12 @@
 angular.module('roupApp.directives', [])
 .directive('lineGraph', function() {
     return {
-        template: '<div class="graphLine" style="width:100%; height:100px;"></div>',
-        replace: true,
+        template: '<div class="graphLine" ></div>',
         link: function(scope, tElem, attrs) {
-            console.log('chart');
             var options = function(businessSeries, marketSeries){
                 return {
                     chart: {
+                        renderTo: $(tElem)[0],
                         type: 'areaspline',
                         spacing: [0,0,10,0]
                     },
@@ -69,8 +68,23 @@ angular.module('roupApp.directives', [])
                     }]
                 }
             };
-            $(tElem).highcharts(options([3, 4, 3, 5, 4, 10, 12, 10, 3, 9, 11, 18]
-                , [1, 3, 4, 3, 3, 5, 4, 8, 7, 12, 5, 6]));
+
+            var chart = new Highcharts.Chart(options([3, 4, 3, 5, 4, 10, 12, 10, 3, 9, 11, 18], [1, 3, 4, 3, 3, 5, 4, 8, 7, 12, 5, 6]));
+
+            // $(tElem).highcharts(options([3, 4, 3, 5, 4, 10, 12, 10, 3, 9, 11, 18]
+            //     , [1, 3, 4, 3, 3, 5, 4, 8, 7, 12, 5, 6]));
+            scope.$watch('allBusiness', function(data){
+                console.log(data);
+                if (data) {
+                    chart.series[0].update({
+                        data: [10, 4, 10, 5, 4, 10, 12, 10, 10, 9, 11, 18]
+                    });
+                } else {
+                    chart.series[0].update({
+                        data: [10, 4, 3, 5, 4, 3, 12, 3, 3, 9, 11, 18]
+                    });
+                }
+            });
         }
     }
 })

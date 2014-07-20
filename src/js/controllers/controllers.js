@@ -159,11 +159,14 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
       }
   }
   $scope.data;
+  $scope.oldMarket;
   $http.get('./dataModel.json')
     .success(function(data){
         console.log(data);
         $scope.data = data;
+        $scope.oldMarket = data;
     });
+
 
     $scope.submitQuestion = function(){
       // console.log('submitQuestion run with ' + JSON.stringify({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}))
@@ -180,6 +183,24 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
       })
 
     }
+
+
+$scope.allBusiness = false;
+$scope.changeMarket = function(){
+  $scope.allBusiness = !$scope.allBusiness;
+  if ($scope.allBusiness){
+    for(var i = 0; i < $scope.data.length; i++){
+    $scope.data[i].market.percent = (Math.floor(Math.random() * 90) + 1) + "%";
+  }
+  } else {
+    for(var i = 0; i < $scope.data.length; i++){
+    $scope.data[i].market.percent = $scope.oldMarket[i].market.percent;
+  }
+    
+  }
+  console.log($scope.data[0].market.percent);
+}
+
   // $timeout(function(){
   //   console.log('Tabs index: ' + tabDelegate.selectedIndex());
   // }, 2000)
