@@ -81,3 +81,29 @@ h2 {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+.question-item{
+  font-weight:200;
+}
+.views{
+  margin-left: 75%;
+}
+
+/*Question items*/
+.number{
+  font-weight:200;
+  font-size: 1.1em;
+  padding-left: .5em;
+}
+.number-answers{
+  color:red;
+}
+.number-views{
+  color:green;
+
+}
+
+.dock {
+  height:100% !important;
+  background-color:#EEEEEE;
+  margin-left:0 !important;
+}

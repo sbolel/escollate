@@ -1,5 +1,5 @@
 <ion-view title="{{pageTitle()}}" hide-back-button="true" hide-nav-bar="false" ng-controller="HomeCtrl">
-  <ion-tabs class="tabs-positive tabs-icon-only" delegate-handle="Main">
+  <ion-tabs class="tabs-positive tabs-icon-top slide-in-right" delegate-handle="Main">
   <ion-tab title="Ask" icon-on="ion-ios7-help" icon-off="ion-ios7-help-outline">
     <!-- Tab 1 content -->
     <div class="list has-nav-header">
@@ -13,9 +13,22 @@
         </button>
       </div>
 
-      <a class="item">
-        <h2 class="question-item title">How do I look for a loan?</h2>
-        <p class="question-item author">Scott Prue</p>
+      <a class="item" style="padding:0px; ">
+        <div class="row" style="padding:0px; height:20%;">
+          <div class="dock" style="display:inline-block; padding-left:.5em; padding-right:.5em;">
+            <div class="row" style="padding:0px;">
+              <i class="icon ion-ios7-arrow-up" style="font-size:1.5em"></i><div class="number number-views">12</div>
+            </div>
+            <div class="row" style="padding:0px;">
+              <i class="icon ion-ios7-chatboxes" style="font-size:1.5em"></i><div class="number number-answers">1</div>
+            </div>
+          </div>
+        <div class="column" style="margin-left:.5em;">
+          <h2 class="question-item title">How do I look for a loan?</h2>
+          <h4 class="question-item author" style="display:block;">A Flower Shop</h4>
+        </div>
+      </div>
+
       </a>
       <a class="item">
         <h2 class="question-item title">How do I look for a loan?</h2>
