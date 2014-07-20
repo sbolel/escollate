@@ -2,11 +2,11 @@
     {
      "indicator": "Revenue Growth",
         "market" : {
-            "percent" : "16.0%",
+            "percent" : "16%",
             "series" : [5, 10, 7, 6, 6, 7, 8, 6, 4, 7, 5, 6]
         },
         "business" : {
-            "percent" : "18.1%",
+            "percent" : "18%",
             "series" : [5, 10, 7, 7, 6, 8, 7, 6, 5, 6, 4, 7]
         },
         "desc": "Percentage change in annual sales"
@@ -14,11 +14,11 @@
  {
     "indicator": "Gross Profit Growth",
         "market" : {
-            "percent" : "19.0%",
+            "percent" : "19%",
             "series" : [6, 10, 8, 8, 6, 7, 8, 6, 4, 7, 5, 8]
         },
         "business" : {
-            "percent" : "18.0%",
+            "percent" : "18%",
             "series" : [5, 10, 7, 7, 6, 8, 7, 6, 5, 6, 4, 7]
         },
         "desc": "Percentage change in annual gross profit (Sales - Cost of Goods Sold)"
@@ -26,11 +26,11 @@
  {
     "indicator": "EBITDA Growth",
         "market" : {
-            "percent" : "21.1%",
+            "percent" : "21%",
             "series" : [6, 10, 8, 8, 6, 7, 8, 6, 4, 7, 5, 8]
         },
         "business" : {
-            "percent" : "15.3%",
+            "percent" : "15%",
             "series" : [5, 10, 7, 7, 6, 8, 7, 6, 5, 6, 4, 7]
         },
         "desc": "Percentage change in annual EBITDA (Earnings Before Interest, Tax, Depreciation and Amortization.  EBITDA is a measurement of a company's operating profitability and can be considered a proxy for cash."
@@ -38,11 +38,11 @@
  {
  "indicator": "Net Income Growth",
         "market" : {
-            "percent" : "28.2%",
+            "percent" : "28%",
             "series" : [6, 10, 8, 8, 6, 7, 8, 6, 4, 7, 5, 8]
         },
         "business" : {
-            "percent" : "23.7%",
+            "percent" : "23%",
             "series" : [5, 10, 7, 7, 6, 8, 7, 6, 5, 6, 4, 7]
         },
         "desc": "Percentage change in annual total earnings."
@@ -50,11 +50,11 @@
 {
     "indicator": "Gross Margin",
         "market" : {
-            "percent" : "60.6%",
+            "percent" : "60%",
             "series" : [6, 10, 8, 8, 6, 7, 8, 6, 4, 7, 5, 8]
         },
         "business" : {
-            "percent" : "59.1%",
+            "percent" : "59%",
             "series" : [5, 10, 7, 7, 6, 8, 7, 6, 5, 6, 4, 7]
         },
         "desc": "Percentage showing Total Sales minus Cost of Goods Sold divided by Total Sales.  Gross margin represents the percent of total sales that the company retains after incurring the direct costs associated with producing the goods and services sold by a company. The higher the percentage, the more the company retains on each dollar of sales to service its other costs and obligations."
@@ -62,11 +62,11 @@
 {
     "indicator": "SG&A Margin",
         "market" : {
-            "percent" : "48.0%",
+            "percent" : "48%",
             "series" : [6, 10, 8, 8, 6, 7, 8, 6, 4, 7, 5, 8]
         },
         "business" : {
-            "percent" : "50.0%",
+            "percent" : "50%",
             "series" : [5, 10, 7, 7, 6, 8, 7, 6, 5, 6, 4, 7]
         },
         "desc": "SG&A is the sum of all direct and indirect selling expenses and all general and administrative expenses of a company.  Examining this figure as a percentage of sales compared to other companies in the same industry can give some idea of whether management is spending efficiently or wasting valuable cash flow."
@@ -74,11 +74,11 @@
     {
         "indicator": "EBITDA Margin",
         "market" : {
-            "percent" : "22.7%",
+            "percent" : "22%",
             "series" : [6, 10, 8, 8, 6, 7, 8, 6, 4, 7, 5, 8]
         },
         "business" : {
-            "percent" : "21.8%",
+            "percent" : "21%",
             "series" : [5, 10, 7, 7, 6, 8, 7, 6, 5, 6, 4, 7]
         },
         "desc": "A measurement of a company's operating profitability. It is equal to earnings before interest, tax, depreciation and amortization (EBITDA) divided by total revenue."
