@@ -171,6 +171,7 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
 
   $scope.submitQuestion = function(){
     // console.log('submitQuestion run with ' + JSON.stringify({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}))
+    $scope.closeModal();
     firebaseRef(['questions']).push({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription, view_count:_.random(1,99), response_count:_.random(1,99)}, function(err){
       if(!err){
         console.log('questions list push successful');
@@ -179,7 +180,6 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
             console.log('personal asks list push successful');
           }
         })
-        $scope.closeModal();
       }
     })
   }
