@@ -78,99 +78,101 @@
       </div> -->
 
 
-        <a class="item question-item">
-          <div class="row question-row">
-            <div class="dock">
-              <div class="row row-dock" style="margin-bottom:.3em;">
-                <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">3</div>
-              </div>
-              <div class="row row-dock">
-                <i class="icon ion-ios7-chatboxes"></i><div class="number number-answers">0</div>
-              </div>
+      <a class="item question-item">
+        <div class="row question-row">
+          <div class="dock">
+            <div class="row row-dock" style="margin-bottom:.3em;">
+              <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">3</div>
             </div>
-            <div class="column item-details">
-              <h2 class="question-item title">How do I look for a loan?</h2>
-              <h4 class="question-item author">A Flower Shop</h4>
+            <div class="row row-dock">
+              <i class="icon ion-ios7-chatboxes"></i><div class="number number-answers">0</div>
             </div>
           </div>
-        </a>
-        <a class="item question-item">
-          <div class="row question-row">
-            <div class="dock">
-              <div class="row row-dock" style="margin-bottom:.3em;">
-                <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">12</div>
-              </div>
-              <div class="row row-dock">
-                <i class="icon ion-ios7-chatboxes"></i><div class="number number-answers">1</div>
-              </div>
-            </div>
-            <div class="column item-details">
-              <h2 class="question-item title">High average costs?</h2>
-              <h4 class="question-item author">Catering Out The Box</h4>
-            </div>
+          <div class="column item-details">
+            <h2 class="question-item title">How do I look for a loan?</h2>
+            <h4 class="question-item author">A Flower Shop</h4>
           </div>
-        </a>
-        <a class="item question-item">
-          <div class="row question-row">
-            <div class="dock">
-              <div class="row row-dock" style="margin-bottom:.3em;">
-                <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">70</div>
-              </div>
-              <div class="row row-dock">
-                <i class="icon ion-ios7-chatboxes"></i><div class="number number-answers">5</div>
-              </div>
-            </div>
-            <div class="column item-details">
-              <h2 class="question-item title">How do you cut summer utilities?</h2>
-              <h4 class="question-item author">Ice Cream Palace</h4>
-            </div>
-          </div>
-        </a>
-      </div>
-    </ion-tab>
-    <ion-tab title="Dash" icon-on="ion-ios7-speedometer" icon-off="ion-ios7-speedometer-outline">
-      <!-- Tab 2 content -->
-      <ion-header-bar align-title="center" class="bar-positive">
-        <h1 class="title header-bar-title">Dash</h1>
-      </ion-header-bar>
-      <div class="list has-nav-header">
-        <div class="bar bar-header item-input-inset">
-          <label class="item-input-wrapper">
-            <i class="icon ion-ios7-search placeholder-icon"></i>
-            <input type="search" placeholder="Filter">
-          </label>
-          <button class="button button-clear no-margin">
-            <i class="icon ion-ios7-close-outline"></i>
-          </button>
         </div>
       </a>
-
-      <div ng-repeat="question in questions" ng-class="{active : isSelected(question)}">
-        <a class="item" ng-click="viewQuestion(question);">
-          <h2 class="question-item title">{{question.title}}</h2>
-          <p class="question-item author">{{question.author}}</p>
-        </a>
-      </div>
-
+      <a class="item question-item">
+        <div class="row question-row">
+          <div class="dock">
+            <div class="row row-dock" style="margin-bottom:.3em;">
+              <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">12</div>
+            </div>
+            <div class="row row-dock">
+              <i class="icon ion-ios7-chatboxes"></i><div class="number number-answers">1</div>
+            </div>
+          </div>
+          <div class="column item-details">
+            <h2 class="question-item title">High average costs?</h2>
+            <h4 class="question-item author">Catering Out The Box</h4>
+          </div>
+        </div>
+      </a>
+      <a class="item question-item">
+        <div class="row question-row">
+          <div class="dock">
+            <div class="row row-dock" style="margin-bottom:.3em;">
+              <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">70</div>
+            </div>
+            <div class="row row-dock">
+              <i class="icon ion-ios7-chatboxes"></i><div class="number number-answers">5</div>
+            </div>
+          </div>
+          <div class="column item-details">
+            <h2 class="question-item title">How do you cut summer utilities?</h2>
+            <h4 class="question-item author">Ice Cream Palace</h4>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div ng-repeat="question in questions" ng-class="{active : isSelected(question)}">
+      <a class="item" ng-click="viewQuestion(question);">
+        <h2 class="question-item title">{{question.title}}</h2>
+        <p class="question-item author">{{question.author}}</p>
+      </a>
     </div>
   </ion-tab>
 
-  <ion-tab title="Dash" icon-on="ion-ios7-speedometer" icon-off="ion-ios7-speedometer-outline">
-    <!-- Tab 3 content -->
-    <ion-header-bar align-title="center" class="bar-positive">
-      <h1 class="title header-bar-title">Dash</h1>
-    </ion-header-bar>
-    <div class="list has-nav-header">
-      <div class="bar bar-header item-input-inset">
-        <label class="item-input-wrapper">
-          <i class="icon ion-ios7-search placeholder-icon"></i>
-          <input type="search" placeholder="Filter">
-        </label>
-        <button class="button button-clear no-margin">
-          <i class="icon ion-ios7-close-outline"></i>
-        </button>
-      </div>
+<ion-tab title="Dash" icon-on="ion-ios7-speedometer" icon-off="ion-ios7-speedometer-outline">
+<!-- Tab 3 content -->
+  <ion-header-bar align-title="center" class="bar-positive">
+  <h1 class="title header-bar-title">Dash</h1>
+  </ion-header-bar>
+  <div class="list has-nav-header">
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios7-search placeholder-icon"></i>
+        <input type="search" placeholder="Filter">
+      </label>
+      <button class="button button-clear no-margin">
+        <i class="icon ion-ios7-close-outline"></i>
+      </button>
     </div>
-  </ion-tab>
+  </div>
+
+  <ion-content style="margin-top:53px;">
+    <div ng-repeat="indicator in data" class="card">
+      <div class="item item-divider" ng-click="expand = !expand">
+        <h2 style="display: inline">{{indicator.indicator}}</h2>
+        <div style="float: right">
+          <h2 style="display: inline; margin-right: 10px"><strong>{{indicator.market.percent}}</strong></h2><h2 style="display: inline" ng-style="againstMarket(indicator.market.percent, indicator.business.percent)"><strong>{{indicator.business.percent}}<i style="color: black; margin-left: 10px" ng-class="trend(indicator.business.series)" class="icon"></i></strong></h2>
+        </div>
+      </div>
+      <div style="padding:10px 0px 10px 0px" class="item item-text-wrap" ng-show="expand">
+        <div line-graph></div>
+        <p style="margin: 5px 0px 5px 5px; line-height: 15px; font-size: 0.7em; color: gray">This is a basic Card which contains an item that has wrapping text.</p>
+      </div>
+      <div style="padding:0px" ng-show="expand" class="item item-divider"><button style="margin: 0px" class="button button-full button-balanced">Ask A Question!</button></div>
+    </div>
+  </ion-content>
+
+</ion-tab>
 </ion-tabs>
 </ion-view>
+
+
+
+
+

@@ -60,7 +60,7 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
 })
 
 
-.controller('HomeCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $ionicTabsDelegate, $ionicModal, $timeout) {
+.controller('HomeCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $ionicTabsDelegate, $ionicModal, $timeout, $http) {
   console.log('CONTROLLER[HomeCtrl]');
   var tabDelegate = $ionicTabsDelegate.$getByHandle('Main');
   
@@ -105,25 +105,34 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
   $scope.closeModal = function() {
     $scope.modal.hide();
   };
+  $scope.againstMarket = function (market, business) {
+      if(market<=business){
+          return {color: "green"};
+      } else {
+          return {color: "red"};
+      }
+  };
+  $scope.trend = function (businessData) {
+      var last = businessData[businessData.length];
+      var penultimate = businessData[businessData.length - 1];
+      if (last <= penultimate) {
+          return 'ion-arrow-down-b';
+      } else {
+          return 'ion-arrow-up-b';
+      }
+  }
+  $scope.data;
+  $http.get('./dataModel.json')
+    .success(function(data){
+        console.log(data);
+        $scope.data = data;
+    });
 
   // $timeout(function(){
   //   console.log('Tabs index: ' + tabDelegate.selectedIndex());
   // }, 2000)
 
 })
-
-.controller('QuestionCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $firebase) {
-  console.log('CONTROLLER[QuestionCtrl]');
-  // $scope.question = $rootScope.selected
-})
-
-.controller('DashCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $firebase, $location, $timeout, $ionicLoading) {
-  console.log('CONTROLLER[DashCtrl]');
-
-})
-
-
-
 
 
 .controller('CardsCtrl', function($scope, $ionicSwipeCardDelegate, $rootScope) {
