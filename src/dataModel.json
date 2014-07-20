@@ -59,18 +59,6 @@
         },
         "desc": "Percentage showing Total Sales minus Cost of Goods Sold divided by Total Sales.  Gross margin represents the percent of total sales that the company retains after incurring the direct costs associated with producing the goods and services sold by a company. The higher the percentage, the more the company retains on each dollar of sales to service its other costs and obligations."
     },
-{
-    "indicator": "SG&A Margin",
-        "market" : {
-            "percent" : "48%",
-            "series" : [6, 10, 8, 8, 6, 7, 8, 6, 4, 7, 5, 8]
-        },
-        "business" : {
-            "percent" : "50%",
-            "series" : [5, 10, 7, 7, 6, 8, 7, 6, 5, 6, 4, 7]
-        },
-        "desc": "SG&A is the sum of all direct and indirect selling expenses and all general and administrative expenses of a company.  Examining this figure as a percentage of sales compared to other companies in the same industry can give some idea of whether management is spending efficiently or wasting valuable cash flow."
-    },
     {
         "indicator": "EBITDA Margin",
         "market" : {
