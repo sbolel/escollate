@@ -77,8 +77,10 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
   console.log('CONTROLLER[HomeCtrl]');
   var tabDelegate = $ionicTabsDelegate.$getByHandle('Main');
 
-  $scope.questions = {1:{title:'How do I rent tools?',author:'SmallBizGuy'},2:{title:'How do I hire people?',author:'Busy Girl 2k13'}};
-
+  // $scope.questions = {1:{title:'How do I rent tools?',author:'SmallBizGuy'},2:{title:'How do I hire people?',author:'Busy Girl 2k13'}};
+  firebaseRef('questions').on('value', function(questionsSnap){
+    $scope.questions = questionsSnap.val();
+  })
   $scope.pageTitle = function(){
     if(tabDelegate.selectedIndex() == 0 ){
       return 'Questions'
