@@ -143,10 +143,10 @@ i.nav-icon {
   background-color:#EEEEEE;
   display:inline-block;
   padding:.5em;
-  margin-right:.5em;
 }
 .item-details{
   margin-left:.5em !important;
+  padding-right:.3em !important;
   padding-top:.8em !important;
 }
 .row-dock{
@@ -157,7 +157,16 @@ i.nav-icon {
   font-size:1.5em
 }
 
-
+.item-input-inset {
+  max-height: 46px;
+  padding:0 0 0 5px; 
+}
+.14px {
+  font-size:14px !important;
+}
+.12px {
+  font-size:12px !important;
+}
 .fade-in-out.ng-enter, .fade-in-out .ng-enter {
   -webkit-animation: fadeIn 0.3s;
   -moz-animation: fadeIn 0.3s;
