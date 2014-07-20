@@ -22,34 +22,14 @@ angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', '
     controller: 'WelcomeCtrl',
     templateUrl: 'templates/connect.welcome.html'
   })
-
-  /* Main App */
   .state('home', {
-    url: '/home',
+    url:'/home',
     controller: 'HomeCtrl',
-    templateUrl: 'templates/home.html',
-  })
-  .state('dash', {
-    url: '/dash',
-    controller: 'DashCtrl',
-    templateUrl: 'templates/home.dash.html',
+    templateUrl: 'templates/home.html'
   })
 
-
-  .state('cards', {
-      url: '/browse',
-      controller: 'CardsCtrl',
-      templateUrl: 'templates/browse.html'
-  })
-  
-  /* Questions */
-  .state('questions', {
+  .state('questionitem', {
     url: '/questions',
-    controller: 'QuestionsCtrl',
-    templateUrl: 'templates/questions.html'
-  })
-  .state('questions.item', {
-    url: '/questions/:id',
     templateUrl: 'templates/questions.item.html'
   })
 
@@ -65,56 +45,6 @@ angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', '
     controller: 'AccountCtrl',
     templateUrl: 'templates/feedback.html'
   })
-
-
-  // /* Message Creation */
-  // .state('publish', {
-  //   url: '/publish',
-  //   controller: 'PublishCtrl',
-  //   templateUrl: 'templates/publish.html',
-  // })
-  // .state('newSent', {
-  //   url: '/new',
-  //   controller: 'newSentMsgCtrl',
-  //   templateUrl: 'templates/outbox.new.html',
-  // })
-
-  // /* Received Messages */
-  // .state('inbox', {
-  //   url: '/inbox',
-  //   controller: 'InboxCtrl',
-  //   templateUrl: 'templates/inbox.html'
-  // })
-  // .state('receivedMessage', {
-  //   url: '/inbox/:messageId',
-  //   controller: 'ReceivedMsgCtrl',
-  //   templateUrl: 'templates/inbox.message.html'
-  // })
-
-  //  Sent Messages
-  // .state('outbox', {
-  //   url: '/outbox',
-  //   controller: 'OutboxCtrl',
-  //   templateUrl: 'templates/outbox.html'
-  // })
-  // .state('sentMessage', {
-  //   url: '/:messageId',
-  //   controller: 'SentMsgCtrl',
-  //   templateUrl: 'templates/outbox.message.html'
-  // })
-
-  // /* Bookmarked Messages */
-  // .state('bookmarks', {
-  //   url: '/bookmarks',
-  //   controller: 'BookmarksCtrl',
-  //   templateUrl: 'templates/bookmarks.html'
-  // })
-  // .state('bookmarkedMessage', {
-  //   url: '/bookmarks/:messageId',
-  //   controller: 'BookmarkedMsgCtrl',
-  //   templateUrl: 'templates/bookmarks.message.html'
-  // })
-
 
   $urlRouterProvider.otherwise("/");
 });
