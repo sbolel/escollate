@@ -19,7 +19,23 @@
           <i class="icon ion-ios7-close-outline"></i>
         </button>
       </div>
+      <div ng-repeat="question in questions" ng-class="{active : isSelected(question)}">
+        <a class="item question-item" ng-click="viewQuestion(question);">
+          <div class="row question-row">
+            <div class="dock">
+              <div class="row row-dock" style="margin-bottom:.3em;">
+                <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">70</div>
+              </div>
+            </div>
+            <div class="column item-details">
+              <h2 class="question-item title">{{question.title}}</h2>
+              <h4 class="question-item author">{{question.author.displayName}}</h4>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
+
   </ion-tab>
 
   <ion-tab title="Ask" icon-on="ion-ios7-help" icon-off="ion-ios7-help-outline">
@@ -31,7 +47,7 @@
           </div>
         <ion-content style="margin-top:13px;">
           <h2>{{selected.title}}</h2>
-          <p>User: {{selected.author}}</p>
+          <p>{{selected.author.displayName}}</p>
         </ion-content>
       </div>
     </script>
@@ -76,21 +92,6 @@
           <i class="icon ion-ios7-close-outline"></i>
         </button>
       </div> -->
-      <div ng-repeat="question in questions" ng-class="{active : isSelected(question)}">
-        <a class="item question-item" ng-click="viewQuestion(question);">
-          <div class="row question-row">
-            <div class="dock">
-              <div class="row row-dock" style="margin-bottom:.3em;">
-                <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">70</div>
-              </div>
-            </div>
-            <div class="column item-details">
-              <h2 class="question-item title">{{question.title}}</h2>
-              <h4 class="question-item author">{{question.author.displayName}}</h4>
-            </div>
-          </div>
-        </a>
-      </div>
     </div>
 
   </ion-tab>
@@ -102,7 +103,7 @@
       </ion-header-bar>
       <ion-content style="margin-top:56px !important;">
         <h2>{{selected.title}}</h2>
-        <p>{{selected.author}}</p>
+        <p>{{selected.author.displayName}}</p>
       </ion-content>
     </div>
   </script>

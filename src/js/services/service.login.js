@@ -97,11 +97,11 @@ angular.module('roupApp.service.login', ['firebase', 'roupApp.service.firebase',
       }
 
       firebaseRef(['users', userObj.uid]).set({
-        displayName: userObj.displayName,
+        displayName: username,
         email: userObj.thirdPartyUserData.email,
         picture: userPic,
         provider: userObj.provider,
-        username: username}, function(err) {
+        name: userObj.displayName}, function(err) {
 
         if(!err){
           console.log('LOGIN_SERVICE: newUser in Firebase: ' + userObj.uid);
