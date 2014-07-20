@@ -66,8 +66,28 @@
           </div>
         </div>
       </a>
+
+      <li ng-repeat="question in questions" ng-class="{active : isSelected(question)}">
+        <a class="item" ng-click="viewQuestion(question);">
+          <h2 class="question-item title">{{question.title}}</h2>
+          <p class="question-item author">{{question.author}}</p>
+        </a>
+      </li>
+
     </div>
   </ion-tab>
+
+  <script id="question-modal.html" type="text/ng-template">
+    <div class="modal">
+      <ion-header-bar>
+        <h1 class="title">Question</h1>
+      </ion-header-bar>
+      <ion-content style="margin-top:56px !important;">
+        <h2>{{selected.title}}</h2>
+        <p>{{selected.author}}</p>
+      </ion-content>
+    </div>
+  </script>
 
   <ion-tab title="Dash" icon-on="ion-ios7-speedometer" icon-off="ion-ios7-speedometer-outline">
     <!-- Tab 2 content -->

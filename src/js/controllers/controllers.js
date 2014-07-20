@@ -60,25 +60,42 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
 })
 
 
-.controller('HomeCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $ionicTabsDelegate, $timeout) {
+.controller('HomeCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $ionicTabsDelegate, $ionicModal, $timeout) {
   console.log('CONTROLLER[HomeCtrl]');
   var tabDelegate = $ionicTabsDelegate.$getByHandle('Main');
+  $scope.questions = {1:{title:'How do I rent tools?',author:'SmallBizGuy'},2:{title:'How do I hire people?',author:'Busy Girl 2k13'}};
   $scope.pageTitle = function(){
-      if(tabDelegate.selectedIndex() == 0 ){
-        return 'Ask'
-      }
+    if(tabDelegate.selectedIndex() == 0 ){
+      return 'Ask'
+    }
     else{
       return 'Dash'
     }
-
   }
-  $timeout(function(){
-    console.log('Tabs index: ' + tabDelegate.selectedIndex());
-
-}, 2000)
+  $scope.isSelected = function(section) {
+    return $rootScope.selected === section;
+  }
+  $scope.viewQuestion = function(section) {
+    // $state.go('question',section);
+    $scope.selected = section;
+    $ionicModal.fromTemplateUrl('question-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+      $scope.modal.show();
+    });
+  }
+  // $timeout(function(){
+  //   console.log('Tabs index: ' + tabDelegate.selectedIndex());
+  // }, 2000)
 
 })
 
+.controller('QuestionCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $firebase) {
+  console.log('CONTROLLER[QuestionCtrl]');
+  // $scope.question = $rootScope.selected
+})
 
 .controller('DashCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $firebase, $location, $timeout, $ionicLoading) {
   console.log('CONTROLLER[DashCtrl]');
@@ -86,10 +103,7 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
 })
 
 
-.controller('QuestionsCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $firebase) {
-  console.log('CONTROLLER[QuestionsCtrl]');
 
-})
 
 
 .controller('CardsCtrl', function($scope, $ionicSwipeCardDelegate, $rootScope) {

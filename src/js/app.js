@@ -24,12 +24,14 @@ angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', '
   })
   .state('home', {
     url:'/home',
+    controller: 'HomeCtrl',
     templateUrl: 'templates/home.html'
   })
 
-  .state('questionitem', {
-    url: '/questions',
-    templateUrl: 'templates/questions.item.html'
+  .state('question', {
+    url: '/question',
+    controller: 'HomeCtrl',
+    templateUrl: 'templates/question.html'
   })
 
 
