@@ -1,4 +1,4 @@
-angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', 'firebase', 'checklist-model', 'ionic.contrib.ui.cards'])
+angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', 'firebase', 'checklist-model', 'roupApp.directives'])
 //set constant variable for firebase url
 .constant('FBURL', 'https://roup.firebaseio.com')
 
