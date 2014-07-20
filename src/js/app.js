@@ -31,7 +31,7 @@ angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', '
   .state('question', {
     url: '/question',
     controller: 'HomeCtrl',
-    templateUrl: 'templates/question.html'
+    templateUrl: 'templates/questions.item.html'
   })
 
 

@@ -3,7 +3,7 @@ body {
   cursor: url('http://ionicframework.com/img/finger.png'), auto;
   font-family: "Lato", sans-serif !important;
 }
-h1, h2 {
+h1, h2, h3 {
   font-weight: 200;
 }
 h1 {
@@ -21,7 +21,7 @@ h2 {
 }
 
 i.nav-icon {
-  font-size: 20px !important; 
+  font-size: 20px !important;
   margin: 7px;
 }
 
@@ -66,7 +66,7 @@ i.nav-icon {
   margin: 0 !important;
 }
 .sm-margin {
-  margin: 
+  margin:
 }
 .no-padding {
   padding: 0 !important;

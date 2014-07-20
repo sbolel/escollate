@@ -80,21 +80,24 @@
           <i class="icon ion-ios7-close-outline"></i>
         </button>
       </div>
-      <div ng-repeat="question in questions" ng-class="{active : isSelected(question)}">
-        <a class="item question-item" ng-click="viewQuestion(question);">
-          <div class="row question-row">
-            <div class="dock">
-              <div class="row row-dock" style="margin-bottom:.3em;">
-                <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">70</div>
+        <div ng-repeat="question in questions" ng-class="{active : isSelected(question)}">
+          <a class="item question-item" ng-click="viewQuestion(question);">
+            <div class="row question-row">
+              <div class="dock">
+                <div class="row row-dock" style="margin-bottom:.3em;">
+                  <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">{{question.response_count || '12'}}</div>
+                </div>
+                <div class="row row-dock">
+                  <i class="icon ion-ios7-chatboxes-outline"></i><div class="number number-answers">{{question.view_count|| '1'}}</div>
+                </div>
+              </div>
+              <div class="column item-details">
+                <h2 class="question-item title">{{question.title}}</h2>
+                <h4 class="question-item author">{{question.author.displayName}}</h4>
               </div>
             </div>
-            <div class="column item-details">
-              <h2 class="question-item question-title">{{question.title}}</h2>
-              <h4 class="question-item question-author">{{question.author.displayName}}</h4>
-            </div>
-          </div>
-        </a>
-      </div>
+          </a>
+        </div>
     </div>
 
   </ion-tab>
@@ -114,15 +117,28 @@
       </button>
     </ion-nav-buttons>
     <div class="list has-nav-header">
-<!--       <div class="bar bar-header item-input-inset">
-        <label class="item-input-wrapper">
-          <i class="icon ion-ios7-search placeholder-icon"></i>
-          <input type="search" placeholder="Search">
-        </label>
-        <button class="button button-clear no-margin">
-          <i class="icon ion-ios7-close-outline"></i>
-        </button>
-      </div> -->
+      <!--  Null Item -->
+      <a class="item" ng-show="isNull.asks" ng-hide="!isNull.asks" ng-click="newQuestion()">
+        <div class="center-text"><h3><i class="icon ion-plus-round"></i>   Click Here to Begin Asking</h3></div>
+      </a>
+      <div ng-repeat="question in asks" ng-class="{active : isSelected(question)}">
+        <a class="item question-item" ng-click="viewQuestion(question);">
+          <div class="row question-row">
+            <div class="dock">
+              <div class="row row-dock" style="margin-bottom:.3em;">
+                <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">{{question.response_count || '12'}}</div>
+              </div>
+              <div class="row row-dock">
+                <i class="icon ion-ios7-chatboxes-outline"></i><div class="number number-answers">{{question.view_count|| '1'}}</div>
+              </div>
+            </div>
+            <div class="column item-details">
+              <h2 class="question-item title">{{question.title}}</h2>
+              <h4 class="question-item author">{{question.author.displayName}}</h4>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
 
   </ion-tab>

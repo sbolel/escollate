@@ -45,8 +45,13 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
 .controller('WelcomeCtrl', function($scope, $rootScope, $state, $stateParams, loginService, forgeService) {
   console.log('CONTROLLER[WelcomeCtrl]');
   $scope.firstName = $stateParams.firstName;
+  $scope.username = '';
   $scope.createNewUser = function() {
     console.log('First login of this user; Adding '+$rootScope.auth.user.uid+' to Firebase and registering Parse Push.');
+    if($scope.username == ''){
+      alert('enter a valid username');
+    }
+  else{
     loginService.createProviderProfile($rootScope.auth.user, $scope.username, function(err){
       if(!err){
         console.log("created new profile");
@@ -58,28 +63,45 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
       }
     })
   }
-})
 
-.controller('QuestionCtrl', function($scope, $rootScope, forgeService, firebaseRef){
-  console.log('CONTROLLER[QuestionCtrl]');
-  $scope.submitQuestion = function(){
-    console.log('submitQuestion run with ' + JSON.stringify({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}))
-    firebaseRef(['questions']).push({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}, function(err){
-      if(!err){
-        console.log('push successful');
-        $scope.model.hide();
-      }
-    })
   }
-
 })
+//
+// .controller('QuestionCtrl', function($scope, $rootScope, forgeService, firebaseRef){
+//   console.log('CONTROLLER[QuestionCtrl]');
+//   $scope.submitQuestion = function(){
+//     console.log('submitQuestion run with ' + JSON.stringify({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}))
+//     firebaseRef(['questions']).push({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}, function(err){
+//       if(!err){
+//         console.log('push successful');
+//         $scope.model.hide();
+//       }
+//     })
+//   }
+//
+// })
 .controller('HomeCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $ionicTabsDelegate, $ionicModal, $timeout, $http) {
   console.log('CONTROLLER[HomeCtrl]');
   var tabDelegate = $ionicTabsDelegate.$getByHandle('Main');
+      $scope.isNull = {};
+      $scope.isNull.asks = false;
 
   // $scope.questions = {1:{title:'How do I rent tools?',author:'SmallBizGuy'},2:{title:'How do I hire people?',author:'Busy Girl 2k13'}};
   firebaseRef('questions').on('value', function(questionsSnap){
     $scope.questions = questionsSnap.val();
+  })
+  firebaseRef(['users', $rootScope.auth.user.uid, 'asks']).on('value', function(questionsSnap){
+    if(questionsSnap.val() == null){
+      console.log('null test is correct');
+      $scope.isNull.asks = true;
+      $scope.nullAsk = {1:{title:'You have not asked a question', author:'Click the plus to try'}}
+    }
+    else{
+      console.log('null test is wrong')
+      $scope.asks = questionsSnap.val();
+      $scope.isNull.asks = false;
+
+    }
   })
   $scope.pageTitle = function(){
     if(tabDelegate.selectedIndex() == 0 ){
@@ -142,14 +164,21 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
         console.log(data);
         $scope.data = data;
     });
+
     $scope.submitQuestion = function(){
-      console.log('submitQuestion run with ' + JSON.stringify({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}))
-      firebaseRef(['questions']).push({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}, function(err){
+      // console.log('submitQuestion run with ' + JSON.stringify({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}))
+      firebaseRef(['questions']).push({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription, view_count:_.random(1,99), response_count:_.random(1,99)}, function(err){
         if(!err){
-          console.log('push successful');
+          console.log('questions list push successful');
+          firebaseRef(['users', $rootScope.auth.user.uid, 'asks']).push({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription, view_count:0, response_count:0}, function(err){
+            if(!err){
+              console.log('personal asks list push successful');
+            }
+          })
           $scope.closeModal();
         }
       })
+
     }
   // $timeout(function(){
   //   console.log('Tabs index: ' + tabDelegate.selectedIndex());
