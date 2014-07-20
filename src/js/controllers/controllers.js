@@ -89,17 +89,18 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
   // $scope.questions = {1:{title:'How do I rent tools?',author:'SmallBizGuy'},2:{title:'How do I hire people?',author:'Busy Girl 2k13'}};
   firebaseRef('questions').on('value', function(questionsSnap){
     $scope.questions = questionsSnap.val();
+    $scope.$apply();
   })
   firebaseRef(['users', $rootScope.auth.user.uid, 'asks']).on('value', function(questionsSnap){
     if(questionsSnap.val() == null){
       console.log('null test is correct');
       $scope.isNull.asks = true;
-      $scope.nullAsk = {1:{title:'You have not asked a question', author:'Click the plus to try'}}
     }
     else{
       console.log('null test is wrong')
       $scope.asks = questionsSnap.val();
       $scope.isNull.asks = false;
+      $scope.$apply();
 
     }
   })
@@ -168,22 +169,20 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
     });
 
 
-    $scope.submitQuestion = function(){
-      // console.log('submitQuestion run with ' + JSON.stringify({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}))
-      firebaseRef(['questions']).push({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription, view_count:_.random(1,99), response_count:_.random(1,99)}, function(err){
-        if(!err){
-          console.log('questions list push successful');
-          firebaseRef(['users', $rootScope.auth.user.uid, 'asks']).push({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription, view_count:0, response_count:0}, function(err){
-            if(!err){
-              console.log('personal asks list push successful');
-            }
-          })
-          $scope.closeModal();
-        }
-      })
-
-    }
-
+  $scope.submitQuestion = function(){
+    // console.log('submitQuestion run with ' + JSON.stringify({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}))
+    firebaseRef(['questions']).push({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription, view_count:_.random(1,99), response_count:_.random(1,99)}, function(err){
+      if(!err){
+        console.log('questions list push successful');
+        firebaseRef(['users', $rootScope.auth.user.uid, 'asks']).push({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription, view_count:0, response_count:0}, function(err){
+          if(!err){
+            console.log('personal asks list push successful');
+          }
+        })
+        $scope.closeModal();
+      }
+    })
+  }
 
 $scope.allBusiness = false;
 $scope.changeMarket = function(){
@@ -196,7 +195,7 @@ $scope.changeMarket = function(){
     for(var i = 0; i < $scope.data.length; i++){
     $scope.data[i].market.percent = $scope.oldMarket[i].market.percent;
   }
-    
+
   }
   console.log($scope.data[0].market.percent);
 }
