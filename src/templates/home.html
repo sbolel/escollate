@@ -80,24 +80,21 @@
           <i class="icon ion-ios7-close-outline"></i>
         </button>
       </div>
-        <div ng-repeat="question in questions" ng-class="{active : isSelected(question)}">
-          <a class="item question-item" ng-click="viewQuestion(question);">
-            <div class="row question-row">
-              <div class="dock">
-                <div class="row row-dock" style="margin-bottom:.3em;">
-                  <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">{{question.response_count || '12'}}</div>
-                </div>
-                <div class="row row-dock">
-                  <i class="icon ion-ios7-chatboxes-outline"></i><div class="number number-answers">{{question.view_count|| '1'}}</div>
-                </div>
-              </div>
-              <div class="column item-details">
-                <h2 class="question-item title">{{question.title}}</h2>
-                <h4 class="question-item author">{{question.author.displayName}}</h4>
+      <div ng-repeat="question in questions" ng-class="{active : isSelected(question)}">
+        <a class="item question-item" ng-click="viewQuestion(question);">
+          <div class="row question-row">
+            <div class="dock">
+              <div class="row row-dock" style="margin-bottom:.3em;">
+                <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">70</div>
               </div>
             </div>
-          </a>
-        </div>
+            <div class="column item-details">
+              <h2 class="question-item question-title">{{question.title}}</h2>
+              <h4 class="question-item question-author">{{question.author.displayName}}</h4>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
 
   </ion-tab>
