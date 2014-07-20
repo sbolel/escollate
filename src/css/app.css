@@ -45,6 +45,17 @@ h2 {
   /*-moz-border-radius: 36px;  Disabled for FF1+ */
   }
 
+.no-margin {
+  margin: 0 !important;
+}
+
+.button-left{
+  width: 49%;
+}
+.button-right{
+  width: 49%;
+}
+
 #homeView {
   height: 100%;
   width: auto;

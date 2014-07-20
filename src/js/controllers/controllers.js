@@ -234,6 +234,11 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
   }
 }])
 
+.controller('QuestionsCtrl', ['firebaseRef', 'loginService', '$rootScope', '$scope', 'syncData', '$state', function(firebaseRef, loginService, $rootScope, $scope, syncData, $state) {
+}])
+
+
+
  .controller('CardsCtrl', function($scope, $ionicSwipeCardDelegate, $rootScope) {
   $rootScope.accepted = 0;
   $rootScope.rejected = 0;

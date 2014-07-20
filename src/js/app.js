@@ -30,13 +30,22 @@ angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', '
     templateUrl: 'templates/home.html',
   })
 
-
   .state('cards', {
       url: '/browse',
       controller: 'CardsCtrl',
       templateUrl: 'templates/browse.html'
   })
   
+  /* Questions */
+  .state('questions', {
+    url: '/questions',
+    controller: 'QuestionsCtrl',
+    templateUrl: 'templates/questions.html'
+  })
+  .state('questions.item', {
+    url: '/questions/:id',
+    templateUrl: 'templates/questions.item.html'
+  })
 
 
   /* Account */
