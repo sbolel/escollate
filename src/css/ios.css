@@ -9,7 +9,10 @@
   margin-top:12px;
 }
 .nav-bar .title{
-  margin-top:12px;
+  margin-top:12px !important;
+}
+.header-bar-title{
+  margin-top:12px !important;
 }
 .bar-header{
   height: 56px !important;

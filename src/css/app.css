@@ -3,7 +3,7 @@ body {
   cursor: url('http://ionicframework.com/img/finger.png'), auto;
 }
 h1, h2 {
-  font-weight: 100;
+  font-weight: 200;
 }
 h1 {
   font-size: 4.5em;
@@ -83,6 +83,14 @@ h2 {
 }
 .question-item{
   font-weight:200;
+  padding:0px;
+}
+.question-row{
+  padding:0px;
+  height:70px;
+}
+.question-item .author{
+    display:block;
 }
 .views{
   margin-left: 75%;
@@ -107,8 +115,16 @@ h2 {
   background-color:#EEEEEE;
   display:inline-block;
   padding:.5em;
+  margin-right:.5em;
 }
 .item-details{
-  margin-left:.5em;
-  padding-top:.8em;
+  margin-left:.5em !important;
+  padding-top:.8em !important;
+}
+.row-dock{
+  padding:0px;
+}
+.row-dock i{
+  color: #aaaaaa;
+  font-size:1.5em
 }

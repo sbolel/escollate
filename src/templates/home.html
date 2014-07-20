@@ -2,6 +2,11 @@
   <ion-tabs class="tabs-positive tabs-icon-top slide-in-right" delegate-handle="Main">
   <ion-tab title="Ask" icon-on="ion-ios7-help" icon-off="ion-ios7-help-outline">
     <!-- Tab 1 content -->
+    <ion-nav-buttons side="right">
+        <button class="button button-clear">
+          <i class="ion-plus-round"></i>
+        </button>
+    </ion-nav-buttons>
     <div class="list has-nav-header">
       <div class="bar bar-header item-input-inset">
         <label class="item-input-wrapper">
@@ -13,36 +18,62 @@
         </button>
       </div>
 
-      <a class="item" style="padding:0px;">
-        <div class="row" style="padding:0px; height:70px;">
-          <div class="dock" style="display:inline-block; padding-left:.5em; padding-right:.3em; padding-top:.7em">
-            <div class="row" style="padding:0px; margin-bottom:.3em;">
-              <i class="icon ion-ios7-arrow-up" style="font-size:1.5em"></i><div class="number number-views">12</div>
+      <a class="item question-item">
+        <div class="row question-row">
+          <div class="dock">
+            <div class="row row-dock" style="margin-bottom:.3em;">
+              <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">12</div>
             </div>
-            <div class="row" style="padding:0px;">
-              <i class="icon ion-ios7-chatboxes" style="font-size:1.5em"></i><div class="number number-answers">1</div>
+            <div class="row row-dock">
+              <i class="icon ion-ios7-chatboxes"></i><div class="number number-answers">1</div>
             </div>
           </div>
-        <div class="column item-details">
-          <h2 class="question-item title">How do I look for a loan?</h2>
-          <h4 class="question-item author" style="display:block;">A Flower Shop</h4>
+          <div class="column item-details">
+            <h2 class="question-item title">How do I look for a loan?</h2>
+            <h4 class="question-item author">A Flower Shop</h4>
+          </div>
         </div>
-      </div>
-
       </a>
-      <a class="item">
-        <h2 class="question-item title">How do I look for a loan?</h2>
-        <p class="question-item author">Scott Prue</p>
+      <a class="item question-item">
+        <div class="row question-row">
+          <div class="dock">
+            <div class="row row-dock" style="margin-bottom:.3em;">
+              <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">12</div>
+            </div>
+            <div class="row row-dock">
+              <i class="icon ion-ios7-chatboxes"></i><div class="number number-answers">1</div>
+            </div>
+          </div>
+          <div class="column item-details">
+            <h2 class="question-item title">High average costs?</h2>
+            <h4 class="question-item author">Catering Out The Box</h4>
+          </div>
+        </div>
       </a>
-      <a class="item">
-        <h2 class="question-item title">How do I look for a loan?</h2>
-        <p class="question-item author">Scott Prue</p>
+      <a class="item question-item">
+        <div class="row question-row">
+          <div class="dock">
+            <div class="row row-dock" style="margin-bottom:.3em;">
+              <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">12</div>
+            </div>
+            <div class="row row-dock">
+              <i class="icon ion-ios7-chatboxes"></i><div class="number number-answers">1</div>
+            </div>
+          </div>
+          <div class="column item-details">
+            <h2 class="question-item title">How do I look for a loan?</h2>
+            <h4 class="question-item author">A Flower Shop</h4>
+          </div>
+        </div>
       </a>
     </div>
   </ion-tab>
 
   <ion-tab title="Dash" icon-on="ion-ios7-speedometer" icon-off="ion-ios7-speedometer-outline">
     <!-- Tab 2 content -->
+    <ion-header-bar align-title="center" class="bar-positive">
+      <h1 class="title header-bar-title">Dash</h1>
+    </ion-header-bar>
     <div class="list has-nav-header">
       <div class="bar bar-header item-input-inset">
         <label class="item-input-wrapper">
