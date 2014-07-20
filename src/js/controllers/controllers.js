@@ -83,11 +83,11 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
   })
   $scope.pageTitle = function(){
     if(tabDelegate.selectedIndex() == 0 ){
-      return 'Questions'
+      return 'escollate'
     } else if (tabDelegate.selectedIndex() == 1 ) {
-      return 'Ask'
+      return 'escollate'
     } else {
-      return 'Dash'
+      return 'escollate'
     }
   }
   $scope.isSelected = function(section) {
