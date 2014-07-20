@@ -51,6 +51,7 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
       if(!err){
         console.log("created new profile");
         forgeService.savePushId();
+        forgeService.changeStatusColor('white');
         $state.go('home');
       } else{
         console.error('error in creating profile: ' + err);
@@ -63,9 +64,9 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
 .controller('HomeCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $ionicTabsDelegate, $ionicModal, $timeout, $http) {
   console.log('CONTROLLER[HomeCtrl]');
   var tabDelegate = $ionicTabsDelegate.$getByHandle('Main');
-  
+
   $scope.questions = {1:{title:'How do I rent tools?',author:'SmallBizGuy'},2:{title:'How do I hire people?',author:'Busy Girl 2k13'}};
-  
+
   $scope.pageTitle = function(){
     if(tabDelegate.selectedIndex() == 0 ){
       return 'Questions'
