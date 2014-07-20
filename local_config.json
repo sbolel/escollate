@@ -1,20 +1,20 @@
 {
-  "general": {},
-  "ios": {
-    "profiles": {
-      "DEFAULT": {
-        "provisioning_profile": "/Users/sinanbolel/Dev/_security/ios_certificates/Roup.mobileprovision",
-        "developer_certificate": "iPhone Developer: Ivan Bogdan (V539H7U8FN)"
-      }
-    },
-    "simulatorsdk": "8.0",
-    "simulatorfamily": "iphone",
-    "simulatorvariant": "default",
-    "device": "device"
-  },
-  "android": {
-    "profiles": {
-      "DEFAULT": {}
-    }
-  }
+	"general": {},
+	"ios": {
+		"profiles": {
+			"DEFAULT": {
+				"provisioning_profile": "/Users/scott/Dev/Echo_dev.mobileprovision",
+				"developer_certificate": "iPhone Developer: Ivan Bogdan (V539H7U8FN)"
+			}
+		},
+		"simulatorsdk": "8.0",
+		"simulatorfamily": "iphone",
+		"simulatorvariant": "default",
+		"device": "device"
+	},
+	"android": {
+		"profiles": {
+			"DEFAULT": {}
+		}
+	}
 }

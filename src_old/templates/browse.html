@@ -1,0 +1,18 @@
+<ion-view title="Browse">
+    <swipe-cards>
+        <swipe-card on-swipe="cardSwiped()" id="start-card">
+          Swipe right to save, left to discard
+        </swipe-card>
+        <swipe-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe="cardSwiped($index)">
+          <div ng-controller="CardCtrl">
+            <div class="title">
+              {{card.title}}
+            </div>
+            <div class="image">
+              <img ng-src="{{card.image}}">
+            </div>
+          </div>
+        </swipe-card>
+      </swipe-cards>
+</ion-view>
+

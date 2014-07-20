@@ -1,0 +1,159 @@
+<ion-view title="{{pageTitle()}}" hide-back-button="true" hide-nav-bar="false">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear">
+      <i class="ion-gear-a nav-icon"></i>
+    </button>
+  </ion-nav-buttons>
+
+  <ion-tabs class="tabs-positive tabs-icon-top" delegate-handle="Main">
+
+  <ion-tab title="Questions" icon-on="ion-ios7-chatbubble" icon-off="ion-ios7-chatbubble-outline">
+    <!-- Tab 1 content -->
+    <div class="list has-nav-header">
+      <div class="bar bar-header item-input-inset">
+        <label class="item-input-wrapper">
+          <i class="icon ion-ios7-search placeholder-icon"></i>
+          <input type="search" placeholder="Filter">
+        </label>
+        <button class="button button-clear no-margin">
+          <i class="icon ion-ios7-close-outline"></i>
+        </button>
+      </div>
+    </div>
+  </ion-tab>
+
+  <ion-tab title="Ask" icon-on="ion-ios7-help" icon-off="ion-ios7-help-outline">
+    <!-- Question View Modal -->
+    <script id="question-view-modal.html" type="text/ng-template">
+      <div class="modal">
+          <div class="bar bar-header bar-clear">
+            <button class="button-clear" ng-click="closeModal()" style="position:absolute;right:0;bottom:0;"><i class="ion-ios7-close" style="font-size:28px;"></i></button>
+          </div>
+        <ion-content style="margin-top:13px;">
+          <h2>{{selected.title}}</h2>
+          <p>User: {{selected.author}}</p>
+        </ion-content>
+      </div>
+    </script>
+    <!-- Create Question Modal -->
+    <script id="question-create-modal.html" type="text/ng-template">
+      <div class="modal" style="height:100%;">
+        <div class="bar bar-header bar-clear" style="height:32px !important;">
+          <button class="button button-clear button-calm no-margin small-text" ng-click="closeModal()">Cancel</button>
+          <button class="button button-clear button-calm no-margin small-text" ng-click="submitQuestion()">Submit</button>
+        </div>
+
+        <div class="list" style="padding-top:33px;height:100%;">
+          <label class="item item-input">
+            <input ng-model="qTitle" type="text" placeholder="Title">
+          </label>
+          <label class="item item-input" style="height:30%;">
+            <textarea ng-model="qDescription" placeholder="Description..." style="height:100%;"></textarea>
+          </label>
+        </div>
+
+        <div class="item item-avatar">
+          <i class="ion-chatbubble-working" style="color:#fff;"></i>
+        </div>
+      </div>
+    </script>
+    <!-- Tab 2 content -->
+    <ion-nav-buttons side="right">
+      <button class="button button-clear">
+        <i class="ion-search nav-icon"></i>
+      </button>
+      <button class="button button-clear" ng-click="newQuestion()">
+        <i class="ion-plus-round nav-icon"></i>
+      </button>
+    </ion-nav-buttons>
+    <div class="list has-nav-header">
+<!--       <div class="bar bar-header item-input-inset">
+        <label class="item-input-wrapper">
+          <i class="icon ion-ios7-search placeholder-icon"></i>
+          <input type="search" placeholder="Search">
+        </label>
+        <button class="button button-clear no-margin">
+          <i class="icon ion-ios7-close-outline"></i>
+        </button>
+      </div> -->
+
+
+        <a class="item question-item">
+          <div class="row question-row">
+            <div class="dock">
+              <div class="row row-dock" style="margin-bottom:.3em;">
+                <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">3</div>
+              </div>
+              <div class="row row-dock">
+                <i class="icon ion-ios7-chatboxes"></i><div class="number number-answers">0</div>
+              </div>
+            </div>
+            <div class="column item-details">
+              <h2 class="question-item title">How do I look for a loan?</h2>
+              <h4 class="question-item author">A Flower Shop</h4>
+            </div>
+          </div>
+        </a>
+        <a class="item question-item">
+          <div class="row question-row">
+            <div class="dock">
+              <div class="row row-dock" style="margin-bottom:.3em;">
+                <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">12</div>
+              </div>
+              <div class="row row-dock">
+                <i class="icon ion-ios7-chatboxes"></i><div class="number number-answers">1</div>
+              </div>
+            </div>
+            <div class="column item-details">
+              <h2 class="question-item title">High average costs?</h2>
+              <h4 class="question-item author">A/C Servicer in Chicago</h4>
+            </div>
+          </div>
+        </a>
+        <a class="item question-item">
+          <div class="row question-row">
+            <div class="dock">
+              <div class="row row-dock" style="margin-bottom:.3em;">
+                <i class="icon ion-ios7-arrow-up"></i><div class="number number-views">70</div>
+              </div>
+              <div class="row row-dock">
+                <i class="icon ion-ios7-chatboxes"></i><div class="number number-answers">5</div>
+              </div>
+            </div>
+            <div class="column item-details">
+              <h2 class="question-item title">How do you cut summer utilities?</h2>
+              <h4 class="question-item author">Florist in Evanston</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+    </ion-tab>
+    <ion-tab title="Dash" icon-on="ion-ios7-speedometer" icon-off="ion-ios7-speedometer-outline">
+      <!-- Tab 2 content -->
+      <ion-header-bar align-title="center" class="bar-positive">
+        <h1 class="title header-bar-title">Dash</h1>
+      </ion-header-bar>
+      <div class="list has-nav-header">
+        <div class="bar bar-header item-input-inset">
+          <label class="item-input-wrapper">
+            <i class="icon ion-ios7-search placeholder-icon"></i>
+            <input type="search" placeholder="Filter">
+          </label>
+          <button class="button button-clear no-margin">
+            <i class="icon ion-ios7-close-outline"></i>
+          </button>
+        </div>
+      </a>
+
+      <div ng-repeat="question in questions" ng-class="{active : isSelected(question)}">
+        <a class="item" ng-click="viewQuestion(question);">
+          <h2 class="question-item title">{{question.title}}</h2>
+          <p class="question-item author">{{question.author}}</p>
+        </a>
+      </div>
+
+    </div>
+  </ion-tab>
+
+</ion-tabs>
+</ion-view>
