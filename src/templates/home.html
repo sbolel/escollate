@@ -1,12 +1,40 @@
-<ion-view title="{{pageTitle()}}" hide-back-button="true" hide-nav-bar="false" ng-controller="HomeCtrl">
-  <ion-tabs class="tabs-positive tabs-icon-top slide-in-right" delegate-handle="Main">
-  <ion-tab title="Ask" icon-on="ion-ios7-help" icon-off="ion-ios7-help-outline">
+<ion-view title="{{pageTitle()}}" hide-back-button="true" hide-nav-bar="false">
+  <ion-tabs class="tabs-positive tabs-icon-top" delegate-handle="Main">
+  
+  <ion-tab title="Questions" icon-on="ion-ios7-chatbubble" icon-off="ion-ios7-chatbubble-outline">
     <!-- Tab 1 content -->
     <ion-nav-buttons side="right">
         <button class="button button-clear">
           <i class="ion-plus-round"></i>
         </button>
     </ion-nav-buttons>
+    <div class="list has-nav-header">
+      <div class="bar bar-header item-input-inset">
+        <label class="item-input-wrapper">
+          <i class="icon ion-ios7-search placeholder-icon"></i>
+          <input type="search" placeholder="Filter">
+        </label>
+        <button class="button button-clear no-margin">
+          <i class="icon ion-ios7-close-outline"></i>
+        </button>
+      </div>
+    </div>
+  </ion-tab>
+
+  <ion-tab title="Ask" icon-on="ion-ios7-help" icon-off="ion-ios7-help-outline">
+    <!-- Question Modal -->
+    <script id="question-modal.html" type="text/ng-template">
+      <div class="modal">
+          <div class="bar bar-header bar-clear">
+            <button class="button-clear" ng-click="closeModal()" style="position:absolute;right:0;bottom:0;"><i class="ion-ios7-close" style="font-size:28px;"></i></button>
+          </div>
+        <ion-content style="margin-top:13px;">
+          <h2>{{selected.title}}</h2>
+          <p>User: {{selected.author}}</p>
+        </ion-content>
+      </div>
+    </script>
+    <!-- Tab 2 content -->
     <div class="list has-nav-header">
       <div class="bar bar-header item-input-inset">
         <label class="item-input-wrapper">
@@ -67,30 +95,18 @@
         </div>
       </a>
 
-      <li ng-repeat="question in questions" ng-class="{active : isSelected(question)}">
+      <div ng-repeat="question in questions" ng-class="{active : isSelected(question)}">
         <a class="item" ng-click="viewQuestion(question);">
           <h2 class="question-item title">{{question.title}}</h2>
           <p class="question-item author">{{question.author}}</p>
         </a>
-      </li>
+      </div>
 
     </div>
   </ion-tab>
 
-  <script id="question-modal.html" type="text/ng-template">
-    <div class="modal">
-      <ion-header-bar>
-        <h1 class="title">Question</h1>
-      </ion-header-bar>
-      <ion-content style="margin-top:56px !important;">
-        <h2>{{selected.title}}</h2>
-        <p>{{selected.author}}</p>
-      </ion-content>
-    </div>
-  </script>
-
   <ion-tab title="Dash" icon-on="ion-ios7-speedometer" icon-off="ion-ios7-speedometer-outline">
-    <!-- Tab 2 content -->
+    <!-- Tab 3 content -->
     <ion-header-bar align-title="center" class="bar-positive">
       <h1 class="title header-bar-title">Dash</h1>
     </ion-header-bar>
@@ -104,8 +120,9 @@
           <i class="icon ion-ios7-close-outline"></i>
         </button>
       </div>
-
     </div>
   </ion-tab>
+
+
 </ion-tabs>
 </ion-view>

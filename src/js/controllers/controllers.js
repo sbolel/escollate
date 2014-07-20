@@ -63,12 +63,15 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
 .controller('HomeCtrl', function(firebaseRef, forgeService, syncData, $rootScope, $scope, $state, $ionicTabsDelegate, $ionicModal, $timeout) {
   console.log('CONTROLLER[HomeCtrl]');
   var tabDelegate = $ionicTabsDelegate.$getByHandle('Main');
+  
   $scope.questions = {1:{title:'How do I rent tools?',author:'SmallBizGuy'},2:{title:'How do I hire people?',author:'Busy Girl 2k13'}};
+  
   $scope.pageTitle = function(){
     if(tabDelegate.selectedIndex() == 0 ){
+      return 'Questions'
+    } else if (tabDelegate.selectedIndex() == 1 ) {
       return 'Ask'
-    }
-    else{
+    } else {
       return 'Dash'
     }
   }
@@ -83,9 +86,16 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
       animation: 'slide-in-up'
     }).then(function(modal) {
       $scope.modal = modal;
-      $scope.modal.show();
+      $scope.openModal();
     });
   }
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
   // $timeout(function(){
   //   console.log('Tabs index: ' + tabDelegate.selectedIndex());
   // }, 2000)
