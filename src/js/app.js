@@ -29,6 +29,12 @@ angular.module('roupApp', ['roupApp.controllers', 'roupApp.services', 'ionic', '
     controller: 'HomeCtrl',
     templateUrl: 'templates/home.html',
   })
+  .state('dash', {
+    url: '/dash',
+    controller: 'DashCtrl',
+    templateUrl: 'templates/home.dash.html',
+  })
+
 
   .state('cards', {
       url: '/browse',

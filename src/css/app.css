@@ -56,6 +56,16 @@ h2 {
   width: 49%;
 }
 
+.filter-input {
+  padding: 5px;
+}
+.filter-input label {
+}
+.filter-input button {
+  font-size: 15px;
+  height: 100%;
+}
+
 #homeView {
   height: 100%;
   width: auto;
