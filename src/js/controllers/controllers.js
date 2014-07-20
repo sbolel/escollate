@@ -78,10 +78,20 @@ angular.module('roupApp.controllers', ['roupApp.services', 'firebase', 'ionic'])
   $scope.isSelected = function(section) {
     return $rootScope.selected === section;
   }
+  $scope.newQuestion = function() {
+    // $state.go('question',section);
+    $ionicModal.fromTemplateUrl('question-create-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+      $scope.openModal();
+    });
+  }
   $scope.viewQuestion = function(section) {
     // $state.go('question',section);
     $scope.selected = section;
-    $ionicModal.fromTemplateUrl('question-modal.html', {
+    $ionicModal.fromTemplateUrl('question-view-modal.html', {
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {
