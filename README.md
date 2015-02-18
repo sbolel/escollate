@@ -1,24 +1,13 @@
 
-# Roup
-
-## Test version of Roup App
+# Escollate
 
 This project was started with an application skeleton for a typical [AngularFire](http://angularfire.com/) web app.
-
-## Development Dependences
- 1. Grunt
-
-## How to setup
-
- 1. Generated from somoSeed.sh
 
 ## Serving site during development
 run `grunt`
 
-
-## Directory Layout
-
-## Contact
+## Development Dependences
+ 1. Grunt
 
 ## LICENCES
 
