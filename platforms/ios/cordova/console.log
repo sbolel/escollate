@@ -1,9 +1,0 @@
-2015-02-19 20:35:31.158 escollate[6438:151922] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/scott/Library/Developer/CoreSimulator/Devices/C8876D17-BA1F-4314-B997-9FC8AC9FA890/data/Containers/Data/Application/4D4AA344-E563-40E5-9B0C-F9D73B05F8BD/Library/Cookies/Cookies.binarycookies
-2015-02-19 20:35:31.232 escollate[6438:151922] Apache Cordova native platform version 3.6.3 is starting.
-2015-02-19 20:35:31.232 escollate[6438:151922] Multi-tasking -> Device: YES, App: YES
-2015-02-19 20:35:31.241 escollate[6438:151922] Unlimited access to network resources
-2015-02-19 20:35:31.778 escollate[6438:151922] [CDVTimer][keyboard] 0.057995ms
-2015-02-19 20:35:31.778 escollate[6438:151922] [CDVTimer][TotalPluginStartup] 0.198960ms
-2015-02-19 20:35:32.834 escollate[6438:151922] Resetting plugins due to page load.
-2015-02-19 20:35:33.030 escollate[6438:151922] Finished load of: file:///Users/scott/Library/Developer/CoreSimulator/Devices/C8876D17-BA1F-4314-B997-9FC8AC9FA890/data/Containers/Bundle/Application/775E430D-B47C-4C31-A458-7724A3E399B3/escollate.app/www/index.html#/app/playlists
-2015-02-19 20:35:53.322 escollate[6438:152098] Terminating since there is no system app.
