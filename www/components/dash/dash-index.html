@@ -1,0 +1,34 @@
+<ion-view>
+
+  <div class="list has-nav-header">
+    <div class="bar bar-header item-select">
+      <div class="item-checkbox">
+        <label class="checkbox">
+          <input type="checkbox" ng-click="changeMarket()">
+        </label>
+        <h5 style="margin-top: 15px">All Business</h5>
+      </div>
+      <select style="margin-top: 5px">
+        <option>Evanston</option>
+        <option>Ohio</option>
+        <option>Mid West</option>
+      </select>
+    </div>
+  </div>
+
+  <ion-content style="margin-top:53px;">
+    <div ng-repeat="indicator in data" class="card margin-sm">
+      <div class="item item-divider" ng-click="expand = !expand">
+        <h2 style="display: inline">{{indicator.indicator}}</h2>
+        <div style="float: right">
+          <h2 style="display: inline; margin-right: 10px"><strong>{{indicator.market.percent}}</strong></h2><h2 style="display: inline" ng-style="againstMarket(indicator.market.percent, indicator.business.percent)"><strong>{{indicator.business.percent}}</strong></h2>
+        </div>
+      </div>
+      <div style="padding:10px 0px 10px 0px" class="item item-text-wrap" ng-show="expand">
+        <div line-graph style="width:100%; height:100px;"></div>
+        <p style="margin: 5px 0px 5px 5px; line-height: 15px; font-size: 0.7em; color: gray">This is a basic Card which contains an item that has wrapping text.</p>
+      </div>
+      <div style="padding:0px" ng-show="expand" class="item item-divider"><button ng-click="newQuestion()" style="margin: 0px" class="button button-full button-calm button-small">Ask A Question!</button></div>
+    </div>
+  </ion-content>
+</ion-view>

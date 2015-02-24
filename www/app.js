@@ -1,6 +1,7 @@
-angular.module('roupApp', ['ionic', 'firebase','roupApp.controllers', 'roupApp.services',  'checklist-model', 'roupApp.directives'])
+angular.module('escollateApp', ['ionic', 'firebase', 'escollateApp.services',  'checklist-model', 'escollateApp.directives', 'escollateApp.question'])
 //set constant variable for firebase url
 .constant('FBURL', 'https://roup.firebaseio.com')
+
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -14,18 +15,31 @@ angular.module('roupApp', ['ionic', 'firebase','roupApp.controllers', 'roupApp.s
     }
   });
 })
-.run(['loginService', '$rootScope', 'FBURL', function(loginService, $rootScope, FBURL){
-  // establish authentication variable
-  $rootScope.auth = loginService.init('/');
-  $rootScope.FBURL = FBURL;
-}])
 
 .config(function($stateProvider, $urlRouterProvider){
   $stateProvider
 
   /* Login and Signup */
+  .state('app', {
+    abstract:true,
+    controller:'AppCtrl',
+    templateUrl: 'templates/home.html'
+  })
+  .state('home', {
+    parent:'app',
+    url:'/',
+    views: {
+      'questions':{
+        templateUrl:'components/question/question-list.html',
+        controller:'QuestionCtrl'
+      },
+      'dash':{
+        templateUrl:'components/dash/dash-index.html'
+      }
+    }
+  })
   .state('connect',{
-    url: '/',
+    url: '/login',
     controller: 'ConnectCtrl',
     templateUrl: 'templates/connect.html'
   })
@@ -34,11 +48,7 @@ angular.module('roupApp', ['ionic', 'firebase','roupApp.controllers', 'roupApp.s
     controller: 'WelcomeCtrl',
     templateUrl: 'templates/connect.welcome.html'
   })
-  .state('home', {
-    url:'/home',
-    controller: 'HomeCtrl',
-    templateUrl: 'templates/home.html'
-  })
+
 
   .state('question', {
     url: '/question',

@@ -1,6 +1,98 @@
-angular.module('roupApp.service.messages', ['firebase', 'roupApp.service.firebase'])
+angular.module('escollateApp.question', ['firebase', 'ionic', 'escollateApp.service.firebase'])
 
-.factory('messagesService', ['$rootScope', 'firebaseRef', '$q', '$timeout', 'syncData', 'storageService', '$state',
+.controller('QuestionCtrl', function(firebaseRef, $rootScope, $scope, $state, $ionicTabsDelegate, $ionicModal, $timeout, $http) {
+  console.log('CONTROLLER[QuestionsCtrl]');
+  var tabDelegate = $ionicTabsDelegate.$getByHandle('Main');
+      $scope.isNull = {};
+      $scope.isNull.asks = false;
+
+  firebaseRef('questions').on('value', function(questionsSnap){
+    $scope.questions = questionsSnap.val();
+    $scope.$apply();
+  })
+  // firebaseRef(['users', $rootScope.auth.user.uid, 'asks']).on('value', function(questionsSnap){
+  //   if(questionsSnap.val() == null){
+  //     console.log('null test is correct');
+  //     $scope.isNull.asks = true;
+  //   }
+  //   else{
+  //     console.log('null test is wrong')
+  //     $scope.asks = questionsSnap.val();
+  //     $scope.isNull.asks = false;
+
+  //   }
+  // })
+
+  $scope.newQuestion = function() {
+    // $state.go('question',section);
+    $ionicModal.fromTemplateUrl('question-create-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+      $scope.openModal();
+    });
+  }
+  $scope.viewQuestion = function(section) {
+    // $state.go('question',section);
+    $scope.selected = section;
+    $ionicModal.fromTemplateUrl('question-view-modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+      $scope.openModal();
+    });
+  }
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  $scope.againstMarket = function (market, business) {
+      if(market<=business){
+          return {color: "green"};
+      } else {
+          return {color: "red"};
+      }
+  };
+  $scope.trend = function (businessData) {
+      var last = businessData[businessData.length];
+      var penultimate = businessData[businessData.length - 1];
+      if (last <= penultimate) {
+          return 'ion-arrow-down-b';
+      } else {
+          return 'ion-arrow-up-b';
+      }
+  }
+  $scope.data;
+  $scope.oldMarket;
+  $http.get('./dataModel.json').success(function(data){
+	  console.log(data);
+	  $scope.data = data;
+	  $scope.oldMarket = data;
+	});
+
+
+  $scope.submitQuestion = function(){
+    // console.log('submitQuestion run with ' + JSON.stringify({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription}))
+    $scope.closeModal();
+    firebaseRef(['questions']).push({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription, view_count:_.random(1,99), response_count:_.random(1,99)}, function(err){
+      if(!err){
+        console.log('questions list push successful');
+        firebaseRef(['users', $rootScope.auth.user.uid, 'asks']).push({author:{uid:$rootScope.auth.user.uid, displayName: $rootScope.auth.user.displayName}, title: $scope.qTitle, description: $scope.qDescription, view_count:0, response_count:0}, function(err){
+          if(!err){
+            console.log('personal asks list push successful');
+          }
+        })
+      }
+    })
+  }
+})
+
+
+.factory('questionService', ['$rootScope', 'firebaseRef', '$q', '$timeout', 'syncData', 'storageService', '$state',
   function($rootScope, firebaseRef, $q, $timeout, syncData, storageService, $state) {
     return {
       sendMessage: function(title, picture, recipientsArray){

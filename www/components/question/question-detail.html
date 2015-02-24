@@ -1,0 +1,37 @@
+<ion-view title="Question" hide-back-button="false" hide-nav-bar="false">
+  <ion-content class="has-nav-header">
+    <div class="center-text" >
+        <div class="list card">
+          <div class="item">
+            <h2>{{selected.title}}</h2>
+            <p>{{selected.author.displayName}}</p>
+
+          </div>
+          <div class="item item-body">
+              <img class="full-image" ng-src="http://photos-c.ak.instagram.com/hphotos-ak-xap1/10561077_302834063227586_891488343_n.jpg">
+              <p>
+                <p>{{selected.description}}</p>
+              </p>
+              <p>
+                <a class="subdued">1 Answer</a>
+                <a class="subdued">5 Upvotes</a>
+              </p>
+          </div>
+          <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#">
+              <i class="icon ion-thumbsup"></i>
+                Upvote
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-thumbsup"></i>
+                Answer
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-thumbsup"></i>
+                Comment
+            </a>
+          </div>
+        </div>
+    </div>
+  </ion-content>
+</ion-view>

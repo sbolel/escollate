@@ -1,7 +1,7 @@
 'use strict';
 
 /* Filters */
-angular.module('roupApp.filters', [])
+angular.module('escollateApp.filters', [])
 
 .filter('interpolate', ['version', function(version) {
   return function(text) {

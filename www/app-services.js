@@ -1,5 +1,5 @@
 
-angular.module('roupApp.service.firebase', ['firebase'])
+angular.module('escollateApp.services', ['escollateApp.service.firebase'])
 
 // a simple utility to create references to Firebase paths
   .factory('firebaseRef', ['Firebase', 'FBURL', function(Firebase, FBURL) {
@@ -38,4 +38,3 @@ function pathRef(args) {
   }
   return args.join('/');
 }
-
