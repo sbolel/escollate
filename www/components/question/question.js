@@ -22,7 +22,9 @@ angular.module('escollateApp.question', ['firebase', 'ionic', 'escollateApp.serv
 
   //   }
   // })
-
+  $scope.isSelected = function(section) {
+    return $rootScope.selected === section;
+  }
   $scope.newQuestion = function() {
     // $state.go('question',section);
     $ionicModal.fromTemplateUrl('question-create-modal.html', {

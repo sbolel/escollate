@@ -73,20 +73,20 @@ angular.module('escollateApp.directives', [])
 
             // $(tElem).highcharts(options([3, 4, 3, 5, 4, 10, 12, 10, 3, 9, 11, 18]
             //     , [1, 3, 4, 3, 3, 5, 4, 8, 7, 12, 5, 6]));
-scope.$watch('allBusiness', function(data){
-  console.log(data);
-  if (data) {
-    chart.series[0].update({
-      data: [10, 4, 10, 5, 4, 10, 12, 10, 10, 9, 11, 18]
+    scope.$watch('allBusiness', function(data){
+      if (data) {
+        console.log(data);
+        chart.series[0].update({
+          data: [10, 4, 10, 5, 4, 10, 12, 10, 10, 9, 11, 18]
+        });
+      } else {
+        chart.series[0].update({
+          data: [10, 4, 3, 5, 4, 3, 12, 3, 3, 9, 11, 18]
+        });
+      }
     });
-  } else {
-    chart.series[0].update({
-      data: [10, 4, 3, 5, 4, 3, 12, 3, 3, 9, 11, 18]
-    });
+    }
   }
-});
-}
-}
 })
 .directive('slideable', function () {
   return {

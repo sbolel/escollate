@@ -20,21 +20,27 @@ angular.module('escollateApp', ['ionic', 'firebase', 'escollateApp.services',  '
   $stateProvider
 
   /* Login and Signup */
-  .state('app', {
-    abstract:true,
-    controller:'AppCtrl',
-    templateUrl: 'templates/home.html'
-  })
   .state('home', {
-    parent:'app',
-    url:'/',
-    views: {
-      'questions':{
-        templateUrl:'components/question/question-list.html',
-        controller:'QuestionCtrl'
-      },
-      'dash':{
-        templateUrl:'components/dash/dash-index.html'
+    url:'/app',
+    abstract:true,
+    templateUrl: 'templates/menu.html',
+  })
+  .state('questions', {
+    parent:'home',
+    url: '/questions',
+    views:{
+      'menuContent':{
+        controller: 'QuestionCtrl',
+        templateUrl: 'components/question/question-list.html'
+      }
+    }
+  })
+  .state('question', {
+    parent:'home',
+    url: '/questions/:qId',
+    views:{
+      'menuContent':{
+        templateUrl: 'templates/questions.item.html'
       }
     }
   })
@@ -50,12 +56,6 @@ angular.module('escollateApp', ['ionic', 'firebase', 'escollateApp.services',  '
   })
 
 
-  .state('question', {
-    url: '/question',
-    controller: 'HomeCtrl',
-    templateUrl: 'templates/questions.item.html'
-  })
-
 
   /* Account */
   .state('account', {
@@ -69,5 +69,5 @@ angular.module('escollateApp', ['ionic', 'firebase', 'escollateApp.services',  '
     templateUrl: 'templates/feedback.html'
   })
 
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("/app/questions");
 });
