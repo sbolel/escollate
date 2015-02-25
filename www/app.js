@@ -35,6 +35,16 @@ angular.module('escollateApp', ['ionic', 'firebase', 'escollateApp.services',  '
       }
     }
   })
+  .state('question-new', {
+    parent:'home',
+    url: '/questions/new',
+    views:{
+      'menuContent':{
+        controller: 'QuestionCtrl',
+        templateUrl: 'components/question/question-new.html'
+      }
+    }
+  })
   .state('question', {
     parent:'home',
     url: '/questions/:qId',
@@ -64,9 +74,6 @@ angular.module('escollateApp', ['ionic', 'firebase', 'escollateApp.services',  '
     controller: 'WelcomeCtrl',
     templateUrl: 'templates/connect.welcome.html'
   })
-
-
-
   /* Account */
   .state('account', {
     url: '/account',

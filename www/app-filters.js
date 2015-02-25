@@ -30,6 +30,48 @@ angular.module('escollateApp.filters', [])
     return toArray(items).slice().reverse();
   };
 })
+// .filter('search', function($window){
+//   return function (items, query) {
+//     var filtered = []
+//     _ = $window._;
+//     if(query && typeof query == "string"){
+//       var keysToSearch = ['title', 'description', 'author'];
+//       //Filter items that have a key that matches the
+//       var filtered = _.filter(items, function(item){
+//         console.log('item:', item);
+//           //Check each of the keys specified for a match
+//           var matchingKeyArray = _.some(keysToSearch, function(key){
+//             //Check item's parameter value for a match with the query
+//             if(_.has(item, key)){
+//               if(_.isString(item[key])){
+//                 console.log('item[key]', item[key]);
+//                 return matchesQuery(item[key], query);
+//               }
+//               return false
+//               // else if(_.isObject(item[key])){
+
+//               //        _.some(item[key], function(){
+
+//               //        });
+//               //        return false;
+//               // }
+//             }
+
+//             return false;
+//           });
+//           console.log('matching key array:', matchingKeyArray);
+//           return matchingKeyArray.length;
+//       });
+//         return filtered;
+//       }
+//     return items;
+
+//   };
+//   function matchesQuery(str, query){
+//     var letterMatch = new RegExp(query, 'i');
+//     return letterMatch.test(str.substring(0, query.length));
+//   }
+// })
 .filter('searchTitle', function($window){
   return function (items, query) {
     var filtered = [];

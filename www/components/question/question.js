@@ -3,9 +3,9 @@ angular.module('escollateApp.question', ['firebase', 'ionic', 'escollateApp.serv
 .controller('QuestionCtrl', function(firebaseRef, $rootScope, $scope, $state, $ionicTabsDelegate, $ionicModal, $timeout, $http) {
   console.log('CONTROLLER[QuestionsCtrl]');
   var tabDelegate = $ionicTabsDelegate.$getByHandle('Main');
-      $scope.isNull = {};
-      $scope.isNull.asks = false;
-      $scope.search = {value:''};
+  $scope.isNull = {};
+  $scope.isNull.asks = false;
+  $scope.search = {value:''};
   firebaseRef('questions').on('value', function(questionsSnap){
     $scope.questions = questionsSnap.val();
     $scope.$apply();
@@ -22,29 +22,28 @@ angular.module('escollateApp.question', ['firebase', 'ionic', 'escollateApp.serv
 
   //   }
   // })
-  $scope.isSelected = function(section) {
-    return $rootScope.selected === section;
-  }
+
   $scope.newQuestion = function() {
-    // $state.go('question',section);
-    $ionicModal.fromTemplateUrl('question-create-modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-      $scope.modal = modal;
-      $scope.openModal();
-    });
+    $state.go('question-new');
+    // $ionicModal.fromTemplateUrl('question-create-modal.html', {
+    //   scope: $scope,
+    //   animation: 'slide-in-up'
+    // }).then(function(modal) {
+    //   $scope.modal = modal;
+    //   $scope.openModal();
+    // });
   }
-  $scope.viewQuestion = function(section) {
+  $scope.viewQuestion = function(question) {
     // $state.go('question',section);
-    $scope.selected = section;
-    $ionicModal.fromTemplateUrl('question-view-modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-      $scope.modal = modal;
-      $scope.openModal();
-    });
+    $scope.selected = question;
+    $state.go('question', {qId:question.uid});
+    // $ionicModal.fromTemplateUrl('question-view-modal.html', {
+    //   scope: $scope,
+    //   animation: 'slide-in-up'
+    // }).then(function(modal) {
+    //   $scope.modal = modal;
+    //   $scope.openModal();
+    // });
   }
   $scope.openModal = function() {
     $scope.modal.show();
@@ -53,11 +52,11 @@ angular.module('escollateApp.question', ['firebase', 'ionic', 'escollateApp.serv
     $scope.modal.hide();
   };
   $scope.againstMarket = function (market, business) {
-      if(market<=business){
-          return {color: "green"};
-      } else {
-          return {color: "red"};
-      }
+    if(market<=business){
+        return {color: "green"};
+    } else {
+        return {color: "red"};
+    }
   };
   $scope.trend = function (businessData) {
       var last = businessData[businessData.length];

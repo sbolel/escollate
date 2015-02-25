@@ -1,9 +1,15 @@
-<ion-view>
-<!--       <ion-header-bar>
-        <h1 class="title">Question</h1>
-      </ion-header-bar> -->
-      <ion-content style="margin-top:56px !important;">
-        <h2>{{selected.title}}</h2>
-        <p>{{selected.author.displayName}}</p>
-      </ion-content>
+<ion-view title="New Question">
+  <ion-content>
+    <ion-list>
+    	<ion-item>
+    		<input type="text" placeholder="Title">
+    	</ion-item>
+    	<ion-item>
+    		<input type="text" placeholder="Tags">
+    	</ion-item>
+    	<ion-item>
+    		<textarea placeholder="Question"></textarea>
+    	</ion-item>
+    </ion-list>
+  </ion-content>
 </ion-view>
