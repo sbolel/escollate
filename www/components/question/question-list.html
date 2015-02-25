@@ -1,21 +1,21 @@
 <ion-view hide-back-button-"true">
-	  <ion-header-bar class="bar-subheader item-input-inset">
-	    <label class="item-input-wrapper">
-	      <i class="icon ion-ios7-search placeholder-icon"></i>
-	      <input type="search" placeholder="Filter">
-	    </label>
-	    <button class="button button-clear no-margin">
-	      <i class="icon ion-ios7-close-outline"></i>
-	    </button>
 	    <ion-nav-buttons side="right">
 	      <button class="button button-clear" ng-click="newQuestion()">
 	        <i class="ion-plus-round nav-icon"></i>
 	      </button>
 	    </ion-nav-buttons>
+	  <ion-header-bar class="bar-subheader item-input-inset">
+	    <label class="item-input-wrapper">
+	      <i class="icon ion-ios7-search placeholder-icon"></i>
+	      <input type="search" placeholder="Filter" ng-model="search.value">
+	    </label>
+	    <button class="button button-clear no-margin">
+	      <i class="icon ion-ios7-close-outline"></i>
+	    </button>
 	  </ion-header-bar>
 	<ion-content>
 		<ion-list>
-			<ion-item class="question-item" ng-repeat="question in questions" ng-click="viewQuestion(question)" ng-class="{active : isSelected(question)}">
+			<ion-item class="question-item" ng-repeat="question in questions | searchTitle:search.value" ng-click="viewQuestion(question)" ng-class="{active : isSelected(question)}">
 		    <div class="row question-row">
 		      <div class="dock">
 		        <div class="row row-dock" style="margin-bottom:.3em;">

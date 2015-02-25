@@ -30,9 +30,23 @@ angular.module('escollateApp.filters', [])
     return toArray(items).slice().reverse();
   };
 })
+.filter('searchTitle', function($window){
+  return function (items, query) {
+    var filtered = [];
+    var letterMatch = new RegExp(query, 'i');
+    var filtered = $window._.filter(items, function(item){
+      if (letterMatch.test(item.title.substring(0, query.length))) {
+          return true;
+      }
+      return false;
+    })
 
+
+    return filtered;
+  };
+})
 .filter('orderObjectBy', function(){
-  return function(input, attribute) {
+  return function (input, attribute) {
     if (!angular.isObject(input)) return input;
 
     var array = [];

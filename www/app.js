@@ -1,4 +1,4 @@
-angular.module('escollateApp', ['ionic', 'firebase', 'escollateApp.services',  'checklist-model', 'escollateApp.directives', 'escollateApp.question'])
+angular.module('escollateApp', ['ionic', 'firebase', 'escollateApp.services',  'checklist-model', 'escollateApp.directives','escollateApp.filters', 'escollateApp.question', 'escollateApp.dash'])
 //set constant variable for firebase url
 .constant('FBURL', 'https://roup.firebaseio.com')
 
@@ -41,6 +41,16 @@ angular.module('escollateApp', ['ionic', 'firebase', 'escollateApp.services',  '
     views:{
       'menuContent':{
         templateUrl: 'templates/questions.item.html'
+      }
+    }
+  })
+  .state('dash', {
+    parent:'home',
+    url: '/dash',
+    views:{
+      'menuContent':{
+        controller:'DashCtrl',
+        templateUrl: 'components/dash/dash-index.html'
       }
     }
   })

@@ -13,23 +13,14 @@
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
+  <ion-side-menu side="left" ng-controller="MenuCtrl">
+<!--     <ion-header-bar class="bar-stable">
       <h1 class="title">Left</h1>
-    </ion-header-bar>
-    <ion-content>
+    </ion-header-bar> -->
+    <ion-content scroll="false" style="margin-top:50%;">
       <ion-list>
-        <ion-item nav-clear menu-close ng-click="login()">
-          Login
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/search">
-          Search
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/browse">
-          Browse
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/playlists">
-          Playlists
+        <ion-item nav-clear menu-close ng-click="clickButton($index)" ng-repeat="button in buttons">
+          {{button.name}}
         </ion-item>
       </ion-list>
     </ion-content>

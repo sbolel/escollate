@@ -5,7 +5,7 @@ angular.module('escollateApp.question', ['firebase', 'ionic', 'escollateApp.serv
   var tabDelegate = $ionicTabsDelegate.$getByHandle('Main');
       $scope.isNull = {};
       $scope.isNull.asks = false;
-
+      $scope.search = {value:''};
   firebaseRef('questions').on('value', function(questionsSnap){
     $scope.questions = questionsSnap.val();
     $scope.$apply();
