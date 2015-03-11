@@ -6,24 +6,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>Escollate</title>
-    <link href="http://code.ionicframework.com/1.0.0-beta.14/css/ionic.css" rel="stylesheet">
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/ionic/release/css/ionic.css" />
+    <!-- endbower -->
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,100italic' rel='stylesheet' type='text/css'>
     <link href="css/app.css" rel="stylesheet" />
     <link href="css/colors.css" rel="stylesheet" />
     <!-- <link href="css/ios.css" rel="stylesheet" /> -->
-
-    <script src="http://code.ionicframework.com/1.0.0-beta.14/js/ionic.bundle.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.0.0/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-    <!-- scripts.lib -->
-    <script src="lib/moment.min.js"></script>
-    <script src="lib/PhoneFormat.js"></script>
-    <script src="lib/underscore-min.js"></script>
-    <script src="lib/checklist-model.js"></script>
-    <!-- scripts.app -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/ionic/release/js/ionic.js"></script>
+    <script src="bower_components/ionic/release/js/ionic-angular.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/phoneformat/phoneformat.min.js"></script>
+    <script src="bower_components/checklist-model/checklist-model.js"></script>
+    <script src="bower_components/jquery-backstretch/jquery.backstretch.js"></script>
+    <script src="bower_components/highcharts.com/bower-info.js"></script>
+    <script src="bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
+    <!-- endbower -->
+    <script src="http://s3.amazonaws.com/prescottprue/Fireadmin/current/fireadmin.min.js"></script>
+    <!-- <script src="http://d1lxebzlcdgkt.cloudfront.net/current/fireadmin.min.js"></script> -->
     <script src="app.js"></script>
     <script src="app-filters.js"></script>
     <script src="app-controller.js"></script>
@@ -32,11 +41,9 @@
 
     <script src="components/question/question.js"></script>
     <script src="components/dash/dash.js"></script>
-
-
-
-    <!--App Services -->
-    <script src="services/service.firebase.js"></script>
+    <script src="components/session/login/login-controller.js"></script>
+    <script src="components/session/signup/signup-controller.js"></script>
+    <script src="components/session/account/account-controller.js"></script>
   </head>
 
   <body ng-cloak>
@@ -44,7 +51,6 @@
     <ion-nav-view animation="slide-left-right"></ion-nav-view>
 
     <!-- App Version : <span app-version></span> -->
-
 
   </body>
 

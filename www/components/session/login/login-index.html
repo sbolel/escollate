@@ -1,0 +1,22 @@
+<ion-view title="Pyro Starter">
+  <ion-content padding="true" class="has-header">
+    <form>
+      <ion-list>
+      <div class="spacer" style="height: 40px;"></div>
+      <p class="text-center">Sign in to your Pyro Account:</p>
+      <div class="spacer" style="height: 20px;"></div>
+        <p ng-show="err.message" ><h5 class="text-center" style="color:red;font-weight:400;">{{err.message}}</h5></p>
+
+        <label class="item item-input">
+          <input type="text" placeholder="Email" ng-model="loginData.email">
+        </label>
+        <label class="item item-input">
+          <input type="password" placeholder="Password" ng-model="loginData.password">
+        </label>
+      </ion-list>
+      <div class="spacer" style="height: 60px;"></div>
+      <button href="" ng-click="login()" class="button button-block button-theme">Sign In</button>
+      <p class="item button-block button-clear text-center">Don't have an account? <a ui-sref="signup">Sign up.</a></p>
+    </form>
+  </ion-content>
+</ion-view>

@@ -1,4 +1,7 @@
-angular.module('escollateApp', ['ionic', 'firebase', 'escollateApp.services',  'checklist-model', 'escollateApp.directives','escollateApp.filters', 'escollateApp.question', 'escollateApp.dash'])
+angular.module('escollateApp', ['ionic', 'firebase', 'escollateApp.services',  
+                                'checklist-model', 'escollateApp.directives',
+                                'escollateApp.filters', 'escollateApp.question',
+                                'escollateApp.dash'])
 //set constant variable for firebase url
 .constant('FBURL', 'https://roup.firebaseio.com')
 
@@ -64,22 +67,28 @@ angular.module('escollateApp', ['ionic', 'firebase', 'escollateApp.services',  '
       }
     }
   })
-  .state('connect',{
+  /* Account */
+  .state('account', {
+    url: '/account',
+    controller: 'AccountCtrl',
+    templateUrl: 'components/session/account/account-index.html'
+  })
+  .state('signup',{
+    url: '/signup',
+    controller: 'SignupCtrl',
+    templateUrl: 'components/session/signup/signup-index.html'
+  })
+  .state('login', {
     url: '/login',
-    controller: 'ConnectCtrl',
-    templateUrl: 'templates/connect.html'
+    controller: 'LoginCtrl',
+    templateUrl: 'components/session/login/login-index.html'
   })
   .state('welcome', {
     url: '/welcome/:firstName',
     controller: 'WelcomeCtrl',
     templateUrl: 'templates/connect.welcome.html'
   })
-  /* Account */
-  .state('account', {
-    url: '/account',
-    controller: 'AccountCtrl',
-    templateUrl: 'templates/account.html'
-  })
+
   .state('feedback', {
     url: '/feedback',
     controller: 'AccountCtrl',

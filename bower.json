@@ -1,7 +1,15 @@
 {
   "name": "escollate",
   "private": "true",
-  "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.0.0-beta.14"
+  "dependencies": {
+    "angularfire": "~1.0.0",
+    "underscore": "~1.8.2",
+    "ionic": "~1.0.0",
+    "moment": "~2.9.0",
+    "phoneformat": "~0.0.5",
+    "checklist-model": "~0.2.4",
+    "jquery-backstretch": "~2.0.4",
+    "highcharts.com": "~4.1.4",
+    "highcharts-ng": "~0.0.8"
   }
 }

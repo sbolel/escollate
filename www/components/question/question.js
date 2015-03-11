@@ -1,15 +1,15 @@
-angular.module('escollateApp.question', ['firebase', 'ionic', 'escollateApp.service.firebase'])
+angular.module('escollateApp.question', ['firebase', 'ionic'])
 
-.controller('QuestionCtrl', function(firebaseRef, $rootScope, $scope, $state, $ionicTabsDelegate, $ionicModal, $timeout, $http) {
+.controller('QuestionCtrl', function($rootScope, $scope, $state, $ionicTabsDelegate, $ionicModal, $timeout, $http) {
   console.log('CONTROLLER[QuestionsCtrl]');
   var tabDelegate = $ionicTabsDelegate.$getByHandle('Main');
   $scope.isNull = {};
   $scope.isNull.asks = false;
   $scope.search = {value:''};
-  firebaseRef('questions').on('value', function(questionsSnap){
-    $scope.questions = questionsSnap.val();
-    $scope.$apply();
-  })
+  // firebaseRef('questions').on('value', function(questionsSnap){
+  //   $scope.questions = questionsSnap.val();
+  //   $scope.$apply();
+  // })
   // firebaseRef(['users', $rootScope.auth.user.uid, 'asks']).on('value', function(questionsSnap){
   //   if(questionsSnap.val() == null){
   //     console.log('null test is correct');
